@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+ <path>comp.ac</path>
+
+ <animation>
+  <type>material</type>
+  <object-name>Ring</object-name>
+  <emission>
+			<red>0.6</red>
+			<green>0.6</green>
+			<blue>0.6</blue>
+   <factor-prop>controls/lighting/panel-norm</factor-prop>
+  </emission>
+ </animation>
+ 
+ <animation>
+  <type>pick</type>
+  <object-name>Ring</object-name>
+   <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>degs</tooltip-id>
+                <mapping>degs</mapping>
+                <label>Heading: %3d</label>
+                <property>instrumentation/magnetic-compass/indicated-heading-deg</property>
+            </binding>
+        </hovered>
+</animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>Ring</object-name>
+  <property>instrumentation/magnetic-compass/indicated-heading-deg</property>
+  <axis>
+   <x>0.0</x>
+   <y>0.0</y>
+   <z>1.0</z>
+  </axis>
+ </animation>
+
+</PropertyList>
+
+
+
+
+

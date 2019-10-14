@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+	
+	<path>asi.ac</path>
+	
+	<animation>
+		<type>material</type>
+		<object-name>ASI.face</object-name>
+		<object-name>ASI.ring</object-name>
+		<object-name>ASI.needle</object-name>
+		<emission>
+			<red>0.6</red>
+			<green>0.6</green>
+			<blue>0.6</blue>
+			<factor-prop>controls/lighting/panel-norm</factor-prop>
+		</emission>
+	</animation>
+	
+	<!-- Should be temperature -->
+	<animation>
+		<type>pick</type>
+		<object-name>ASI.knob</object-name>
+		<action>
+			<button>0</button>
+			<button>3</button>
+			<repeatable>true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>instrumentation/airspeed-indicator/pressure-alt-offset-deg</property>
+				<step>1</step>
+				<min>0</min>
+				<max>360</max>
+				<wrap>1</wrap>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<button>4</button>
+			<repeatable>true</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>instrumentation/airspeed-indicator/pressure-alt-offset-deg</property>
+				<step>-1</step>
+				<min>0</min>
+				<max>360</max>
+				<wrap>1</wrap>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>ASI.ring</object-name>
+		<property>instrumentation/airspeed-indicator/pressure-alt-offset-deg</property>
+		<factor>1</factor>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>ASI.needle</object-name>
+		<property>instrumentation/airspeed-indicator/indicated-speed-kt-actual</property>
+		<interpolation>
+			<entry><ind> 26</ind><dep>  0.0</dep></entry>
+			<entry><ind> 40</ind><dep> 24.0</dep></entry>
+			<entry><ind> 50</ind><dep> 41.0</dep></entry>
+			<entry><ind> 60</ind><dep> 58.0</dep></entry>
+			<entry><ind> 70</ind><dep> 83.5</dep></entry>
+			<entry><ind> 80</ind><dep>109.0</dep></entry>
+			<entry><ind> 90</ind><dep>136.0</dep></entry>
+			<entry><ind>100</ind><dep>161.0</dep></entry>
+			<entry><ind>110</ind><dep>187.0</dep></entry>
+			<entry><ind>120</ind><dep>212.0</dep></entry>
+			<entry><ind>130</ind><dep>238.0</dep></entry>
+			<entry><ind>140</ind><dep>264.0</dep></entry>
+			<entry><ind>150</ind><dep>290.0</dep></entry>
+			<entry><ind>160</ind><dep>315.5</dep></entry>
+			<entry><ind>170</ind><dep>332.2</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-0.00021</z-m>
+		</center>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+</PropertyList>

@@ -1,0 +1,26 @@
+AC3Db
+MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
+OBJECT world
+kids 1
+OBJECT poly
+name "carte"
+loc 0 0 -0
+data 5
+carte
+texture "charts.png"
+texrep 1.000000 1.000000
+crease 180.000005
+numvert 4
+0.114402 0 0.082094
+-0.105521 0 0.082094
+-0.105521 0 -0.077161
+0.114402 0 -0.077161
+numsurf 1
+SURF 0x00
+mat 0
+refs 4
+0 0.997133076191 0.996231555939
+3 0.009067512117 0.996231794357
+2 0.007505011745 0.008626373485
+1 0.995570600033 0.008626254275
+kids 0

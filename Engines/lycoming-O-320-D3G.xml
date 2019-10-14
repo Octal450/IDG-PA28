@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<piston_engine name="lycoming-O-320-D3G">
+	
+    <minmp unit="INHG">8.3</minmp>
+    <maxmp unit="INHG">28.5</maxmp>
+    <displacement unit="IN3">360</displacement>
+    <maxhp>160</maxhp>
+    <cycles>4</cycles>
+    <idlerpm>600</idlerpm>
+    <maxrpm>2700</maxrpm>
+    <maxthrottle>1.0</maxthrottle>
+    <minthrottle>0.1</minthrottle>
+    <sparkfaildrop>0.1</sparkfaildrop>
+    <oil-pressure-rpm-max>1215</oil-pressure-rpm-max>
+
+</piston_engine>

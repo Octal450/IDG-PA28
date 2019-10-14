@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+  
+<!-- Warrior II Sound Configuration -->
+<!-- Joshua Davidson (Octal450) -->
+
+<PropertyList>
+	
+	<fx>
+		
+		<crank>
+			<name>engstart</name>
+			<mode>once</mode>
+			<path>Aircraft/IDG-PA28/Sounds/engine-start.wav</path>
+			<property>/engines/engine[0]/running</property>
+			<position>
+				<x>-1.0</x>
+				<y>0.0</y>
+				<z>0.0</z>
+			</position>
+			<volume>
+				<factor>0.7143</factor>
+				<offset>0.72</offset>
+			</volume>
+			<reference-dist>5.0</reference-dist>
+			<max-dist>200.0</max-dist>
+		</crank>
+		
+		<crank>
+			<name>crank</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-PA28/Sounds/engine-crank.wav</path>
+			<condition>
+				<property>/engines/engine[0]/cranking</property>
+				<not>
+					<property>/engines/engine[0]/running</property>
+				</not>
+			</condition>
+			<position>
+				<x>-1.0</x>
+				<y>0.0</y>
+				<z>0.0</z>
+			</position>
+			<volume>
+				<factor>0.7143</factor>
+				<offset>0.07</offset>
+			</volume>
+			<reference-dist>5.0</reference-dist>
+			<max-dist>200.0</max-dist>
+		</crank>
+		
+		<engine-idle>
+			<name>engine-idle</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-PA28/Sounds/engine-idle.wav</path>
+			<condition>
+				<greater-than>
+					<property>/engines/engine[0]/rpm</property>
+					<value>10</value>
+				</greater-than>
+			</condition>
+			<volume>
+				<property>/sim/sound/volume-ramp-engine-start</property>
+			</volume>
+			<volume>
+				<property>/sim/sound/volume-fader-engine-idle</property>
+			</volume>
+			<reference-dist>5.0</reference-dist>
+			<max-dist>200.0</max-dist>
+		</engine-idle>
+		
+		<engine>
+			<name>engine</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-PA28/Sounds/engine.wav</path>
+			<condition>
+				<greater-than>
+					<property>/engines/engine[0]/rpm</property>
+					<value>10</value>
+				</greater-than>
+			</condition>
+			<volume>
+				<property>/sim/sound/volume-ramp-engine-start</property>
+			</volume>
+			<volume>
+				<property>/engines/engine[0]/rpm</property>
+				<factor>0.001176472</factor>
+				<offset>0.205882353</offset>
+				<min>0.5</min>
+				<max>0.95</max>
+			</volume>
+			<pitch>
+				<property>/engines/engine[0]/rpm</property>
+				<factor>0.000434783</factor>
+				<min>0.0</min>
+				<max>2.0</max>
+				<offset>0.01</offset>
+			</pitch>
+			<reference-dist>5.0</reference-dist>
+			<max-dist>200.0</max-dist>
+		</engine>
+		
+		<roll>
+			<name>roll on runway</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-PA28/Sounds/roll.wav</path>
+			<condition>
+				<property>/sim/current-view/internal</property>
+				<or>
+					<property>/gear/gear[0]/wow</property>
+					<property>/gear/gear[1]/wow</property>
+					<property>/gear/gear[2]/wow</property>
+				</or>
+			</condition>
+			<volume>
+				<property>/velocities/groundspeed-kt</property>
+				<type>log</type>
+				<factor>0.1</factor>
+			</volume>
+		</roll>
+		
+		<!-- Wind -->
+		
+		<wind>
+			<name>wind</name>
+			<mode>looped</mode>
+			<path>Sounds/wind.wav</path>
+			<volume>
+				<property>velocities/airspeed-kt</property>
+				<factor>0.0005</factor>
+				<min>0.01</min>
+				<max>0.4</max>
+			</volume>
+		</wind>
+		
+		<!-- Touchdown --><!-- Needs a sound file -->
+		
+		<!--wow>
+			<mode>once</mode>
+			<name>wow0</name>
+			<path>Sounds/touch.wav</path>
+			<condition>
+				<property>gear/gear[0]/wow</property>
+			</condition>
+		</wow>
+		
+		<wow>
+			<mode>once</mode>
+			<name>wow1</name>
+			<path>Sounds/touch.wav</path>
+			<condition>
+				<property>gear/gear[1]/wow</property>
+			</condition>
+		</wow>
+		
+		<wow>
+			<mode>once</mode>
+			<name>wow2</name>
+			<path>Sounds/touch.wav</path>
+			<condition>
+				<property>gear/gear[2]/wow</property>
+			</condition>
+		</wow-->
+		
+		<!-- Cockpit -->
+		
+		<avfan>
+			<name>avfan</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-PA28/Sounds/avfan.wav</path>
+			<volume>
+				<property>/fdm/jsbsim/libraries/av-fan-rpm</property>
+				<factor>0.00001089</factor>
+				<max>0.1</max>
+			</volume>
+			<pitch>
+				<property>/fdm/jsbsim/libraries/av-fan-rpm</property>
+				<factor>0.00011627</factor>
+			</pitch>
+		</avfan>
+		
+		<apoff>
+			<name>apoff</name>
+			<path>Aircraft/IDG-PA28/Sounds/apoff.wav</path>
+			<condition>
+				<property>/it-stec55x/sound/disc</property>
+			</condition>
+			<volume>
+				<factor>40.0</factor>
+			</volume>
+		</apoff>
+		
+		<!-- Rain -->
+		
+		<rain>
+			<name>rain</name>
+			<mode>looped</mode>
+			<path>Aircraft/IDG-PA28/Sounds/rain.wav</path>
+			<volume>
+				<property>/environment/rain-norm</property>
+				<factor>1.2</factor>
+				<max>0.8</max>
+			</volume>
+			<volume>
+				<property>sim/current-view/internal</property>
+				<factor>0.3</factor>
+				<min>0.5</min>
+			</volume>
+			<pitch>
+				<property>sim/current-view/internal</property>
+				<factor>0.5</factor>
+			</pitch>
+		</rain>
+		
+		<!-- Switches -->
+		
+		<switch>
+			<name>Switch1</name>
+			<mode>once</mode>
+			<path>Aircraft/IDG-PA28/Sounds/switch1.wav</path>
+			<condition>
+				<property>/sim/sounde/switch1</property>
+			</condition>
+			<volume>
+				<factor>0.75</factor>
+			</volume>
+		</switch>
+		
+		<switch>
+			<name>Switch2</name>
+			<mode>once</mode>
+			<path>Aircraft/IDG-PA28/Sounds/switch2.wav</path>
+			<condition>
+				<property>/sim/sounde/switch2</property>
+			</condition>
+			<volume>
+				<factor>0.75</factor>
+			</volume>
+		</switch>
+		
+		<switch>
+			<name>Switch3</name>
+			<mode>once</mode>
+			<path>Aircraft/IDG-PA28/Sounds/switch3.wav</path>
+			<condition>
+				<property>/sim/sounde/switch3</property>
+			</condition>
+			<volume>
+				<factor>0.75</factor>
+			</volume>
+		</switch>
+		
+		<switch>
+			<name>Knob</name>
+			<mode>once</mode>
+			<path>Aircraft/IDG-PA28/Sounds/knob.wav</path>
+			<condition>
+				<property>/sim/sounde/knb1</property>
+			</condition>
+			<volume>
+				<factor>0.60</factor>
+			</volume>
+		</switch>
+	
+	</fx>
+
+</PropertyList>

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+	<path>FuelSelector.ac</path>
+
+	<animation>
+		<type>material</type>
+		<object-name>mount</object-name>
+		<object-name>knob</object-name>
+		<emission>
+			<red>0.05</red>
+			<green>0.05</green>
+			<blue>0.05</blue>
+			<factor-prop>controls/lighting/panel-norm</factor-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>knob</object-name>
+		<property>controls/fuel/switches/selected-tank-knob</property>
+		<interpolation>
+			<entry><ind>0</ind><dep> 90</dep></entry>
+			<entry><ind>1</ind><dep>  0</dep></entry>
+			<entry><ind>2</ind><dep>-90</dep></entry>
+		</interpolation>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>knob</object-name>
+		<action>
+			<button>0</button>
+			<button>3</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>controls/fuel/switches/selected-tank</property>
+				<step>1</step>
+				<min>0</min>
+				<max>3</max>
+				<wrap>true</wrap>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<button>4</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-adjust</command>
+				<property>controls/fuel/switches/selected-tank</property>
+				<step>-1</step>
+				<min>0</min>
+				<max>3</max>
+				<wrap>true</wrap>
+			</binding>
+		</action>
+	</animation>
+
+</PropertyList>

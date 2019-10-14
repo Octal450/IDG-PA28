@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+
+<!-- Piper PA28 Crash and Stress -->
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<system name="PA28: Crash and Stress">
+	
+	<channel name="Aero Effects">
+		
+		<fcs_function name="crash-stress/wing-factor">
+			<description>1 when no wings damaged, 0.5 when 1 wing is damaged, and 0 when both damaged</description>
+			<function>
+				<abs>
+					<product>
+						<sum>
+							<property>crash-stress/lwing-damaged</property>
+							<property>crash-stress/rwing-damaged</property>
+							<value>-2.0</value>
+						</sum>
+						<value>0.5</value>
+					</product>
+				</abs>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="crash-stress/left-wing-factor">
+			<description>1 when damaged, 0 when not damaged</description>
+			<function>
+				<abs>
+					<sum>
+						<property>crash-stress/lwing-damaged</property>
+						<value>-1.0</value>
+					</sum>
+				</abs>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="crash-stress/right-wing-factor">
+			<description>1 when damaged, 0 when not damaged</description>
+			<function>
+				<abs>
+					<sum>
+						<property>crash-stress/rwing-damaged</property>
+						<value>-1.0</value>
+					</sum>
+				</abs>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="crash-stress/wing-diff-factor">
+			<description>Calculates differential wing</description>
+			<function>
+				<sum>
+					<product>
+						<property>crash-stress/left-wing-factor</property>
+						<value>-1.0</value>
+					</product>
+					<property>crash-stress/right-wing-factor</property>
+				</sum>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="crash-stress/htail-factor">
+			<description>1 when damaged, 0 when not damaged</description>
+			<function>
+				<abs>
+					<sum>
+						<property>crash-stress/htail-damaged</property>
+						<value>-1.0</value>
+					</sum>
+				</abs>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="crash-stress/vtail-factor">
+			<description>1 when damaged, 0 when not damaged</description>
+			<function>
+				<abs>
+					<sum>
+						<property>crash-stress/vtail-damaged</property>
+						<value>-1.0</value>
+					</sum>
+				</abs>
+			</function>
+		</fcs_function>
+	
+	</channel>
+
+</system>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<PropertyList include="PA28-main.xml">
+
+	<sim>
+		<description>Piper PA28-161 Warrior II (160hp)</description>
+		<flight-model>jsb</flight-model>
+		<aero>PA28-161-160</aero>
+		<primary-set>true</primary-set>
+		
+		<model>
+			<path type="string">Aircraft/IDG-PA28/Models/PA28-161-160.xml</path>
+		</model>
+	</sim>
+
+</PropertyList>

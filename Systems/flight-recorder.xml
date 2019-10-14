@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<!-- PA28 Flight Recorder -->
+
+<PropertyList>
+	<replay-config type="int">0</replay-config>
+	
+	<config n="0">
+		<name>PA28 Flight Recorder</name>
+		
+		<!-- Include Generic Stuff -->
+		<signals include="Aircraft/Generic/flightrecorder/components/position.xml" />
+		<signals include="Aircraft/Generic/flightrecorder/components/controls.xml" />
+		<signals include="Aircraft/Generic/flightrecorder/components/engine-piston-prop.xml">
+			<count type="int">1</count>
+		</signals>
+		<signals include="Aircraft/Generic/flightrecorder/components/gear-fixed.xml">
+			<count type="int">3</count>
+		</signals>
+		<signals include="Aircraft/Generic/flightrecorder/components/tanks.xml">
+			<count type="int">3</count>
+		</signals>
+		
+		<!-- Now Custom Stuff -->
+		<signals>
+			<signal>
+				<type>double</type>
+				<property>/velocities/groundspeed-kt</property>
+			</signal>
+			<signal>
+				<type>double</type>
+				<property>/position/gear-agl-ft</property>
+			</signal>
+			<signal>
+				<type>double</type>
+				<property>/surface-positions/left-aileron-pos-norm</property>
+			</signal>
+			<signal>
+				<type>double</type>
+				<property>/surface-positions/right-aileron-pos-norm</property>
+			</signal>
+			<signal>
+				<type>double</type>
+				<property>/surface-positions/elevator-pos-norm</property>
+			</signal>
+			<signal>
+				<type>double</type>
+				<property>/surface-positions/speedbrake-pos-norm</property> <!-- Trim Tab -->
+			</signal>
+			<signal>
+				<type>double</type>
+				<property>/surface-positions/rudder-pos-norm</property>
+			</signal>
+			<signal>
+				<type>double</type>
+				<property>/fdm/jsbsim/fcs/steer-pos-deg</property>
+			</signal>
+			<signal>
+				<type>float</type>
+				<property>/surface-positions/flap-pos-norm</property>
+			</signal>
+		</signals>
+	</config>
+
+</PropertyList>

@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+	<path>circuitbreakers.ac</path>
+	
+	<!-- put circuit breaker animations here, parameters for translate animation:
+	<animation>
+		<type>translate</type>
+		<object-name></object-name>
+		<property></property>
+		<factor>0.0045</factor>
+		<axis>
+			<x1-m>-1.73766</x1-m>
+			<y1-m>0.0</y1-m>
+			<z1-m>0.014312</z1-m>
+			<x2-m>-1.73107</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>0.015145</z2-m>
+		</axis>
+	</animation>
+	
+	objects are named: 
+	cb.~text~ with ~text~ being placard text without blanks and without symbols in all small (e.g. cb.altntrfield), multiple cbs with the same name: cb.~text~.1; cb.~text~.2 etc. -->
+	
+	<animation>
+		<type>select</type>
+		<object-name>placard.g5.spare</object-name>
+		<condition>
+			<not-equals>
+				<property>options/panel</property>
+				<value>G5 Panel</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>placard.g5</object-name>
+		<condition>
+			<equals>
+				<property>options/panel</property>
+				<value>G5 Panel</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>placard.nsd360.spare</object-name>
+		<condition>
+			<not-equals>
+				<property>options/panel</property>
+				<value>HSI Panel</value>
+			</not-equals>
+		</condition>
+	</animation>
+	<animation>
+		<type>select</type>
+		<object-name>placard.nsd360</object-name>
+		<condition>
+			<equals>
+				<property>options/panel</property>
+				<value>HSI Panel</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>cb.altntrfield</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding> <!-- No toggle -->
+				<command>property-assign</command>
+				<property>controls/electrical/circuit-breakers/alternator-field</property>
+				<value>0</value>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/switch3", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>cb.altntrfield</object-name>
+		<property>controls/electrical/circuit-breakers/alternator-field</property>
+		<factor>0.0045</factor>
+		<axis>
+			<x1-m>-1.73766</x1-m>
+			<y1-m>0.0</y1-m>
+			<z1-m>0.014312</z1-m>
+			<x2-m>-1.73107</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>0.015145</z2-m>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>cb.fuelpump</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding> <!-- No toggle -->
+				<command>property-assign</command>
+				<property>controls/electrical/circuit-breakers/fuel-pump</property>
+				<value>0</value>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/switch3", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>cb.fuelpump</object-name>
+		<property>controls/electrical/circuit-breakers/fuel-pump</property>
+		<factor>0.0045</factor>
+		<axis>
+			<x1-m>-1.73766</x1-m>
+			<y1-m>0.0</y1-m>
+			<z1-m>0.014312</z1-m>
+			<x2-m>-1.73107</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>0.015145</z2-m>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>cb.turnbank</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding> <!-- No toggle -->
+				<command>property-assign</command>
+				<property>controls/electrical/circuit-breakers/turn-bank</property>
+				<value>0</value>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/switch3", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>cb.turnbank</object-name>
+		<property>controls/electrical/circuit-breakers/turn-bank</property>
+		<factor>0.0045</factor>
+		<axis>
+			<x1-m>-1.73766</x1-m>
+			<y1-m>0.0</y1-m>
+			<z1-m>0.014312</z1-m>
+			<x2-m>-1.73107</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>0.015145</z2-m>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>cb.trim</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electrical/circuit-breakers/trim</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/switch3", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>cb.trim</object-name>
+		<property>controls/electrical/circuit-breakers/trim</property>
+		<factor>0.0045</factor>
+		<axis>
+			<x1-m>-1.73766</x1-m>
+			<y1-m>0.0</y1-m>
+			<z1-m>0.014312</z1-m>
+			<x2-m>-1.73107</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>0.015145</z2-m>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>cb.autopilot</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electrical/circuit-breakers/autopilot</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/switch3", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>cb.autopilot</object-name>
+		<property>controls/electrical/circuit-breakers/autopilot</property>
+		<factor>0.0045</factor>
+		<axis>
+			<x1-m>-1.73766</x1-m>
+			<y1-m>0.0</y1-m>
+			<z1-m>0.014312</z1-m>
+			<x2-m>-1.73107</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>0.015145</z2-m>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>cb.transponder</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>controls/electrical/circuit-breakers/transponder</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/switch3", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>cb.transponder</object-name>
+		<property>controls/electrical/circuit-breakers/transponder</property>
+		<factor>0.0045</factor>
+		<axis>
+			<x1-m>-1.73766</x1-m>
+			<y1-m>0.0</y1-m>
+			<z1-m>0.014312</z1-m>
+			<x2-m>-1.73107</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>0.015145</z2-m>
+		</axis>
+	</animation>
+
+</PropertyList>

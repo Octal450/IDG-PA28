@@ -1,0 +1,273 @@
+<?xml version="1.0"?>
+
+<!-- Piper PA28 Electrical System -->
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<system name="PA28: Electrical">
+	
+	<channel name="Main Electrical" execrate="8">
+		
+		<!-- Battery -->
+		<fcs_function name="/systems/electrical/sources/bat/volt">
+			<function>
+				<table>
+					<independentVar lookup="row">/systems/electrical/sources/bat/percent</independentVar>
+					<independentVar lookup="column">/systems/failures/electrical/battery</independentVar>
+					<tableData>
+						      0  1
+						  0   0  0
+						 10  12  1
+						100  14  2
+					</tableData>
+				</table>
+			</function>
+		</fcs_function>
+		
+		<switch name="/systems/electrical/sources/bat/amp">
+			<default value="0"/>
+			<test logic="AND" value="2">
+				/controls/electrical/switches/battery eq 1
+				/systems/electrical/sources/bat/volt ge 4
+			</test>
+		</switch>
+		
+		<!-- Alternator -->
+		<fcs_function name="/systems/electrical/sources/alt/volt"> <!-- Didn't bother to simulate internal componets -->
+			<function>
+				<ifthen>
+					<nq> <!-- If no alternator field, then no magnetize and alternator won't generate anything! -->
+						<property>/controls/electrical/circuit-breakers/alternator-field</property>
+						<value>1</value>
+					</nq>
+					<table>
+						<independentVar lookup="row">/engines/engine[0]/rpm</independentVar>
+						<independentVar lookup="column">/systems/failures/electrical/alternator</independentVar>
+						<tableData>
+								  0  1
+							350   0  0
+							400  10  0
+							470  14  1
+						</tableData>
+					</table>
+					<value>0</value>
+				</ifthen>
+			</function>
+		</fcs_function>
+		
+		<switch name="/systems/electrical/sources/alt/amp">
+			<default value="0"/>
+			<test logic="AND" value="35">
+				/controls/electrical/switches/alternator eq 1
+				/systems/electrical/sources/alt/volt ge 4
+			</test>
+		</switch>
+		
+		<!-- Main Bus Solenoids -->
+		<switch name="/systems/electrical/solenoid/bat-main/output">
+			<default value="0"/>
+			<test value="/systems/electrical/sources/bat/volt">
+				/controls/electrical/switches/battery eq 1
+			</test>
+		</switch>
+		
+		<switch name="/systems/electrical/solenoid/alt-main/output">
+			<default value="0"/>
+			<test value="/systems/electrical/sources/alt/volt">
+				/controls/electrical/switches/alternator eq 1
+			</test>
+		</switch>
+		
+		<!-- Main Bus -->
+		<fcs_function name="/systems/electrical/bus/main">
+			<function>
+				<max>
+					<property>/systems/electrical/solenoid/bat-main/output</property>
+					<property>/systems/electrical/solenoid/alt-main/output</property>
+				</max>
+			</function>
+		</fcs_function>
+		
+		<!-- Main Outputs -->
+		<switch name="rubbish/beacon">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/systems/electrical/bus/main ge 8
+				/controls/switches/beacon eq 1
+			</test>
+			<output>/controls/lighting/beacon</output>
+		</switch>
+		
+		<switch name="rubbish/nav-lights">
+			<default value="0"/>
+			<test logic="AND" value="/controls/switches/nav-lights-factor">
+				/systems/electrical/bus/main ge 8
+				/controls/switches/nav-lights-factor ge 0.1
+			</test>
+			<output>/controls/lighting/nav-lights</output>
+		</switch>
+		
+		<fcs_function name="/controls/lighting/panel-lights-cmd">
+			<function>
+				<ifthen>
+					<and>
+						<ge>
+							<property>/systems/electrical/bus/main</property>
+							<value>8</value>
+						</ge>
+						<ge>
+							<property>/controls/switches/panel-lights-factor</property>
+							<value>0.1</value>
+						</ge>
+					</and>
+					<product>
+						<property>/controls/switches/panel-lights-factor</property>
+						<property>/systems/electrical/bus/main</property>
+						<value>0.071428571</value> <!-- Normalize -->
+					</product>
+					<value>0</value>
+				</ifthen>
+			</function>
+		</fcs_function>
+		
+		<pure_gain name="/systems/electrical/outputs/pitot-heat">
+			<input>/systems/electrical/bus/main</input>
+			<gain>/controls/switches/pitot-heat</gain>
+		</pure_gain>
+		
+		<switch name="rubbish/strobe">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/systems/electrical/bus/main ge 8
+				/controls/switches/strobe-lights eq 1
+			</test>
+			<output>/controls/lighting/strobe</output>
+		</switch>
+		
+		<switch name="/systems/electrical/outputs/fuel-pump">
+			<default value="0"/>
+			<test logic="AND" value="/systems/electrical/bus/main">
+				/controls/fuel/switches/pump eq 1
+				/controls/electrical/circuit-breakers/fuel-pump ne 1
+			</test>
+		</switch>
+		
+		<switch name="/systems/electrical/outputs/turn-coordinator">
+			<default value="0"/>
+			<test value="/systems/electrical/bus/main">
+				/controls/electrical/circuit-breakers/turn-bank ne 1
+			</test>
+		</switch>
+		
+		<!-- Avionics Bus -->
+		<switch name="/systems/electrical/bus/avionics">
+			<default value="0"/>
+			<test value="0">
+				/systems/failures/electrical/avionics-bus eq 1
+			</test>
+			<test logic="OR" value="/systems/electrical/bus/main">
+				/controls/electrical/switches/avionics-master eq 1
+				/controls/electrical/switches/avionics-secondary eq 1
+			</test>
+		</switch>
+		
+		<!-- Avionics Outputs -->
+		<pure_gain name="/systems/electrical/outputs/adf">
+			<input>/systems/electrical/bus/avionics</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<switch name="/systems/electrical/outputs/autopilot">
+			<default value="0"/>
+			<test value="/systems/electrical/bus/avionics">
+				/controls/electrical/circuit-breakers/autopilot ne 1
+			</test>
+		</switch>
+		
+		<pure_gain name="/systems/electrical/outputs/comm[0]">
+			<input>/systems/electrical/bus/avionics</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="/systems/electrical/outputs/comm[1]">
+			<input>/systems/electrical/bus/avionics</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="/systems/electrical/outputs/dme">
+			<input>/systems/electrical/bus/avionics</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<switch name="/systems/electrical/outputs/electrim">
+			<default value="0"/>
+			<test value="/systems/electrical/bus/avionics">
+				/controls/electrical/circuit-breakers/trim ne 1
+			</test>
+		</switch>
+		
+		<pure_gain name="/systems/electrical/outputs/gps">
+			<input>/systems/electrical/bus/avionics</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="/systems/electrical/outputs/hsi">
+			<input>/systems/electrical/bus/avionics</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="/systems/electrical/outputs/nav[0]">
+			<input>/systems/electrical/bus/avionics</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<pure_gain name="/systems/electrical/outputs/nav[1]">
+			<input>/systems/electrical/bus/avionics</input>
+			<gain>1.0</gain>
+		</pure_gain>
+		
+		<switch name="/systems/electrical/outputs/transponder">
+			<default value="0"/>
+			<test value="/systems/electrical/bus/avionics">
+				/controls/electrical/circuit-breakers/transponder ne 1
+			</test>
+		</switch>
+	
+	</channel>
+	
+	<channel name="Annunciator Lights" execrate="8">
+		
+		<switch name="/systems/electrical/light/alt">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/systems/electrical/bus/main ge 8
+				/systems/electrical/sources/alt/volt lt 8
+			</test>
+			<test logic="AND" value="1">
+				/systems/electrical/bus/main ge 8
+				/controls/switches/annun-test eq 1
+			</test>
+		</switch>
+		
+		<switch name="/systems/electrical/light/oil">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/systems/electrical/bus/main ge 8
+				/controls/switches/annun-test eq 1
+			</test>
+		</switch>
+		
+		<switch name="/systems/electrical/light/vac">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/systems/electrical/bus/main ge 8
+				/systems/vacuum/suction-inhg-actual lt 3.2
+			</test>
+			<test logic="AND" value="1">
+				/systems/electrical/bus/main ge 8
+				/controls/switches/annun-test eq 1
+			</test>
+		</switch>
+	
+	</channel>
+
+</system>

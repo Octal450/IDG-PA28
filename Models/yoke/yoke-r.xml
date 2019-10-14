@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<PropertyList> 
+	
+	<path>yoke.ac</path> 
+	
+	<animation>
+		<type>translate</type>
+		<object-name>yoke</object-name>
+		<property>sim/multiplay/generic/float[1]</property>
+		<factor>-0.12</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>yoke</object-name>
+		<property>sim/multiplay/generic/float[0]</property>
+		<factor>-92</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</center>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>yoke</object-name>
+		<condition>
+			<property>options/show-r-yoke</property>
+		</condition>
+	</animation>
+	
+ 	<animation>
+		<type>pick</type>
+		<object-name>pick.obj</object-name>
+		<visible>0</visible>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>options/show-r-yoke</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>acconfig.writeSettings();</script>
+			</binding>
+		</action>
+	</animation>
+
+</PropertyList>

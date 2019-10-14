@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<fdm_config name="IDG-PA28" version="2.0" release="BETA">
+	
+	<fileheader>
+		<author>Joshua Davidson (Octal450)</author>
+		<version>Pre V1.0</version>
+		<description>PA28-161 Warrior II FDE</description>
+	</fileheader>
+
+	<metrics file="Systems/pa28-metrics"/>
+	<mass_balance file="Systems/pa28-mass-balance"/>
+	<ground_reactions file="Systems/pa28-ground-reactions"/>
+
+	<propulsion>
+		<engine file="lycoming-O-360-A4A">
+			<location unit="M">
+				<x>-3.21681</x>
+				<y>0</y>
+				<z>-0.04672</z>
+			</location>
+			<orient unit="DEG">
+				<roll>0</roll>
+				<pitch>0</pitch>
+				<yaw>0</yaw>
+			</orient>
+			<feed>2</feed>
+			<thruster file="fixed-pitch-2-blade">
+				<location unit="M">
+					<x>-3.21681</x>
+					<y>0</y>
+					<z>-0.04672</z>
+				</location>
+				<orient unit="DEG">
+					<roll>0</roll>
+					<pitch>0</pitch>
+					<yaw>0</yaw>
+				</orient>
+				<sense>1</sense>
+				<p_factor>5</p_factor>
+			</thruster>
+		</engine>
+
+		<tank type="FUEL">    <!-- Left Wing Tank -->
+			<location unit="M">
+				<x>-1.20417</x>
+				<y>-0.96284</y>
+				<z>-0.25528</z>
+			</location>
+			<capacity unit="LBS">168</capacity>
+			<contents unit="LBS">119</contents>
+			<type>AVGAS</type>
+			<priority>1</priority>
+		</tank>
+		<tank type="FUEL">    <!-- Right Wing Tank -->
+			<location unit="M">
+				<x>-1.20417</x>
+				<y>0.96284</y>
+				<z>-0.25528</z>
+			</location>
+			<capacity unit="LBS">168</capacity>
+			<contents unit="LBS">119</contents>
+			<type>AVGAS</type>
+			<priority>1</priority>
+		</tank>
+		<tank type="FUEL">    <!-- Engine Pipe -->
+			<location unit="M">
+				<x>-1.07567</x>
+				<y>0</y>
+				<z>-0.07598</z>
+			</location>
+			<capacity unit="LBS">0.01</capacity>
+			<contents unit="LBS">0.00</contents>
+			<type>AVGAS</type>
+			<priority>1</priority>
+		</tank>
+	</propulsion>
+	
+	<system file="pa28-libraries"/>
+	<system file="pa28-crash-stress"/>
+	<system file="pa28-electrical"/>
+	<system file="pa28-engine"/>
+	<system file="pa28-fuel"/>
+	<system file="pa28-fcs"/>
+	<system file="pa28-cockpit"/>
+
+	<flight_control name="none"/>
+	<aerodynamics file="Systems/pa28-aerodynamics.xml"/>
+
+</fdm_config>

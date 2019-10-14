@@ -1,0 +1,499 @@
+<?xml version="1.0"?>
+
+<!-- S-TEC Fifty Five X Autopilot System -->
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+<!-- 3D by Matthew Anderson (Talons), Texture by Jonathan Redpath (legoboyvdlp) -->
+
+<PropertyList>
+	
+    <path>stec-55x.ac</path>
+	
+	<params>
+		<button-translate>-0.002</button-translate> <!-- Button translate factor -->
+	</params>
+	
+	<animation>
+		<type>material</type>
+		<object-name>GroupLighting</object-name>
+		<emission>
+			<red>0.1</red>
+			<green>0.1</green>
+			<blue>0.1</blue>
+			<factor-prop>controls/lighting/panel-norm</factor-prop>
+		</emission>
+	</animation>
+	
+	<animation>
+		<type>material</type>
+		<object-name>Display</object-name>
+		<emission>
+			<red>0.4</red>
+			<green>0.4</green>
+			<blue>0.4</blue>
+			<factor-prop>controls/lighting/panel-norm</factor-prop>
+		</emission>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>HDG.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/hdg</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>RDY.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/rdy</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>NAV.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/nav</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>CWS.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/cws</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>APR.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/apr</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>FAIL.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/fail</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>GPSS.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/gpss</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>REV.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/rev</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>TRIM.ind</object-name>
+		<condition>
+			<equals>
+				<property>/it-stec55x/annun/trim</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>TRIMUP.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/up</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>TRIMDN.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/dn</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>ALT.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/alt</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>GS.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/gs</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>VS.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/vs</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>MINUS.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/vs-sign</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>PLUS.ind</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>it-stec55x/annun/vs-sign</property>
+					<value>1</value>
+				</equals>
+				<greater-than-equals>
+					<property>it-stec55x/input/vs</property>
+					<value>0</value>
+				</greater-than-equals>
+			</and>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>ONE.ind</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>it-stec55x/annun/vs-digit</property>
+					<value>1</value>
+				</equals>
+				<greater-than-equals>
+					<property>it-stec55x/input/vs-abs</property>
+					<value>1000</value>
+				</greater-than-equals>
+			</and>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>DIGITS.ind</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/annun/vs-digit</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>textranslate</type>
+		<object-name>DIGITS.ind</object-name>
+		<property>it-stec55x/input/vs-abs</property>
+		<factor>0.001</factor>
+		<step>100</step>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>HDG.button</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.HDGB(1);</script>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>nasal</command>
+					<script>stec55x.button.HDGB(0);</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>HDG.button</object-name>
+		<property>it-stec55x/input/hdg-button</property>
+		<factor alias="../../params/button-translate"/>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>NAV.button</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>it-stec55x/input/nav-button</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>it-stec55x/input/nav-button</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>stec55x.button.NAV();</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>NAV.button</object-name>
+		<property>it-stec55x/input/nav-button</property>
+		<factor alias="../../params/button-translate"/>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>APR.button</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>it-stec55x/input/apr-button</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>it-stec55x/input/apr-button</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>stec55x.button.APR();</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>APR.button</object-name>
+		<property>it-stec55x/input/apr-button</property>
+		<factor alias="../../params/button-translate"/>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>REV.button</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>it-stec55x/input/rev-button</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>it-stec55x/input/rev-button</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>stec55x.button.REV();</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>REV.button</object-name>
+		<property>it-stec55x/input/rev-button</property>
+		<factor alias="../../params/button-translate"/>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>ALT.button</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>it-stec55x/input/alt-button</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>it-stec55x/input/alt-button</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>stec55x.button.ALT();</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>ALT.button</object-name>
+		<property>it-stec55x/input/alt-button</property>
+		<factor alias="../../params/button-translate"/>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>VS.button</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>it-stec55x/input/vs-button</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>it-stec55x/input/vs-button</property>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>stec55x.button.VS();</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>VS.button</object-name>
+		<property>it-stec55x/input/vs-button</property>
+		<factor alias="../../params/button-translate"/>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>Knob</object-name>
+		<action>
+			<button>0</button>
+			<button>3</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.Knob(1);</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<button>4</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.Knob(-1);</script>
+			</binding>
+		</action>
+	</animation>
+
+</PropertyList>

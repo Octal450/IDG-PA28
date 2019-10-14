@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<!-- PA28-161 Control Panel Dialog -->
+
+<PropertyList>
+	
+	<name>control-panel</name>
+	<layout>vbox</layout>
+	
+	<group>
+		<layout>hbox</layout>
+		
+		<text>
+			<halign>left</halign>
+			<label>PA28 Control Panel</label>
+		</text>
+		<button>
+			<halign>right</halign>
+			<pref-width>20</pref-width>
+			<pref-height>20</pref-height>
+			<legend>X</legend>
+			<key>Esc</key>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+	
+	<hrule/>
+	
+	<group>
+		<layout>table</layout>
+		
+		<text>
+			<row>0</row>
+			<col>0</col>
+			<label>NAV</label>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>0</col>
+			<label>LIGHT</label>
+		</text>
+		
+		<slider>
+			<row>2</row>
+			<col>0</col>
+			<pref-height>60</pref-height>
+			<vertical>true</vertical>
+			<property>/controls/switches/nav-lights-factor</property>
+			<min>0</min>
+			<max>1</max>
+			<step>0.2</step>
+			<live>true</live>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+		</slider>
+		
+		<text>
+			<row>0</row>
+			<col>1</col>
+			<label>MAS</label>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>1</col>
+			<label>BAT</label>
+		</text>
+		
+		<checkbox>
+			<row>2</row>
+			<col>1</col>
+			<halign>center</halign>
+			<property>/controls/electrical/switches/battery</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<live>true</live>
+		</checkbox>
+		
+		<text>
+			<row>0</row>
+			<col>2</col>
+			<label>TER</label>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>2</col>
+			<label>ALT</label>
+		</text>
+		
+		<checkbox>
+			<row>2</row>
+			<col>2</col>
+			<halign>center</halign>
+			<property>/controls/electrical/switches/alternator</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<live>true</live>
+		</checkbox>
+		
+		<text>
+			<row>0</row>
+			<col>3</col>
+			<label>FUEL</label>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>3</col>
+			<label>PUMP</label>
+		</text>
+		
+		<checkbox>
+			<row>2</row>
+			<col>3</col>
+			<halign>center</halign>
+			<property>/controls/fuel/switches/pump</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<live>true</live>
+		</checkbox>
+		
+		<text>
+			<row>0</row>
+			<col>4</col>
+			<label>LAND</label>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>4</col>
+			<label>LIGHT</label>
+		</text>
+		
+		<checkbox>
+			<row>2</row>
+			<col>4</col>
+			<halign>center</halign>
+			<property>/controls/switches/landing-light</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<live>true</live>
+		</checkbox>
+		
+		<text>
+			<row>0</row>
+			<col>5</col>
+			<label>ANTI</label>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>5</col>
+			<label>FIN</label>
+		</text>
+		
+		<checkbox>
+			<row>2</row>
+			<col>5</col>
+			<halign>center</halign>
+			<property>/controls/switches/beacon</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<live>true</live>
+		</checkbox>
+		
+		<text>
+			<row>0</row>
+			<col>6</col>
+			<label>COLL</label>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>6</col>
+			<label>WNG</label>
+		</text>
+		
+		<checkbox>
+			<row>2</row>
+			<col>6</col>
+			<halign>center</halign>
+			<property>/controls/switches/strobe-lights</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<live>true</live>
+		</checkbox>
+		
+		<text>
+			<row>0</row>
+			<col>7</col>
+			<label>PITOT</label>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>7</col>
+			<label>HEAT</label>
+		</text>
+		
+		<checkbox>
+			<row>2</row>
+			<col>7</col>
+			<halign>center</halign>
+			<property>/controls/switches/pitot-heat</property>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+			<live>true</live>
+		</checkbox>
+		
+		<text>
+			<row>0</row>
+			<col>8</col>
+			<label>PANEL</label>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>8</col>
+			<label>LIGHT</label>
+		</text>
+		
+		<slider>
+			<row>2</row>
+			<col>8</col>
+			<pref-height>60</pref-height>
+			<vertical>true</vertical>
+			<property>/controls/switches/panel-lights-factor</property>
+			<min>0</min>
+			<max>1</max>
+			<step>0.2</step>
+			<live>true</live>
+			<binding>
+				<command>dialog-apply</command>
+			</binding>
+		</slider>
+	
+	</group>
+	
+	<hrule/>
+	
+	<group>
+		<layout>table</layout>
+		<halign>left</halign>
+		
+		<group>
+			<row>0</row>
+			<col>0</col>
+			<layout>table</layout>
+			
+			<text>
+				<row>0</row>
+				<col>0</col>
+				<label>AVIONICS</label>
+			</text>
+			
+			<text>
+				<row>1</row>
+				<col>0</col>
+				<label>MASTER</label>
+			</text>
+			
+			<checkbox>
+				<row>2</row>
+				<col>0</col>
+				<halign>center</halign>
+				<property>/controls/switches/avionics-master</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+		</group>
+		
+		<vrule>
+			<row>0</row>
+			<col>1</col>
+		</vrule>
+		
+		<group>
+			<visible>
+				<not-equals>
+					<property>/it-stec55x/settings/fd-equipped</property>
+					<value>1</value>
+				</not-equals>
+			</visible>
+			<row>0</row>
+			<col>2</col>
+			<layout>table</layout>
+			
+			<text>
+				<row>0</row>
+				<col>0</col>
+				<label>AUTOPILOT</label>
+			</text>
+			
+			<text>
+				<row>1</row>
+				<col>0</col>
+				<label>MASTER</label>
+			</text>
+			
+			<checkbox>
+				<row>2</row>
+				<col>0</col>
+				<halign>center</halign>
+				<property>/it-stec55x/input/ap-master-sw</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+		</group>
+		
+		<group>
+			<visible>
+				<equals>
+					<property>/it-stec55x/settings/fd-equipped</property>
+					<value>1</value>
+				</equals>
+			</visible>
+			<row>0</row>
+			<col>2</col>
+			<layout>table</layout>
+			
+			<group>
+				<row>0</row>
+				<col>0</col>
+				<layout>table</layout>
+				
+				<slider>
+					<row>0</row>
+					<col>0</col>
+					<pref-height>60</pref-height>
+					<vertical>true</vertical>
+					<property>/it-stec55x/input/apfd-master-sw</property>
+					<min>0</min>
+					<max>2</max>
+					<step>1</step>
+					<live>true</live>
+					<binding>
+						<command>dialog-apply</command>
+					</binding>
+				</slider>
+			</group>
+			
+			<group>
+				<row>0</row>
+				<col>1</col>
+				<layout>table</layout>
+				
+				<text>
+					<row>0</row>
+					<col>0</col>
+					<label>AP/FD</label>
+				</text>
+				<text>
+					<row>1</row>
+					<col>0</col>
+					<label>FD</label>
+				</text>
+				<text>
+					<row>2</row>
+					<col>0</col>
+					<label>OFF</label>
+				</text>
+			</group>
+		</group>
+		
+		<vrule>
+			<row>0</row>
+			<col>4</col>
+		</vrule>
+		
+		<group>
+			<row>0</row>
+			<col>5</col>
+			<layout>table</layout>
+			
+			<text>
+				<row>0</row>
+				<col>0</col>
+				<label>ELEC</label>
+			</text>
+			
+			<text>
+				<row>1</row>
+				<col>0</col>
+				<label>TRIM</label>
+			</text>
+			
+			<checkbox>
+				<row>2</row>
+				<col>0</col>
+				<halign>center</halign>
+				<property>/it-stec55x/input/electric-trim-sw</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+		</group>
+		
+		<vrule>
+			<row>0</row>
+			<col>6</col>
+		</vrule>
+		
+		<group>
+			<row>0</row>
+			<col>7</col>
+			<layout>table</layout>
+			
+			<text>
+				<row>0</row>
+				<col>0</col>
+				<label>CARB</label>
+			</text>
+			
+			<text>
+				<row>1</row>
+				<col>0</col>
+				<label>HEAT</label>
+			</text>
+			
+			<checkbox>
+				<row>2</row>
+				<col>0</col>
+				<halign>center</halign>
+				<property>/controls/anti-ice/engine[0]/carb-heat-cmd</property>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+				<live>true</live>
+			</checkbox>
+		</group>
+		
+		<vrule>
+			<row>0</row>
+			<col>8</col>
+		</vrule>
+		
+		<group>
+			<row>0</row>
+			<col>9</col>
+			<layout>table</layout>
+			
+			<text>
+				<row>0</row>
+				<col>0</col>
+				<label>FUEL TANK</label>
+			</text>
+			
+			<text>
+				<row>1</row>
+				<col>0</col>
+				<halign>left</halign>
+				<label>OFF    L        R</label>
+			</text>
+			
+			<slider>
+				<row>2</row>
+				<col>0</col>
+				<pref-width>90</pref-width>
+				<property>/systems/fuel/selected-tank</property>
+				<min>0</min>
+				<max>2</max>
+				<step>1</step>
+				<live>true</live>
+				<binding>
+					<command>dialog-apply</command>
+				</binding>
+			</slider>
+		</group>
+	</group>
+
+</PropertyList>

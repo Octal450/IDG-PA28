@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+
+<!-- Piper PA28 Cockpit -->
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<system name="PA28: Cockpit"> <!-- Everything here is after all systems -->
+	
+	<property value="0">libraries/av-fan-rpm-switch</property>
+	
+	<channel name="Animations">
+		
+		<lag_filter name="fcs/parking-brake-lever">
+			<input>/controls/gear/brake-parking</input>
+			<c1>20</c1>
+		</lag_filter>
+		
+		<lag_filter name="/controls/fuel/switches/selected-tank-knob">
+			<input>/controls/fuel/switches/selected-tank</input>
+			<c1>20</c1>
+		</lag_filter>
+		
+		<lag_filter name="/controls/switches/nav-lights-knob">
+			<input>/controls/switches/nav-lights-factor</input>
+			<c1>20</c1>
+		</lag_filter>
+		
+		<lag_filter name="/controls/switches/panel-lights-knob">
+			<input>/controls/switches/panel-lights-factor</input>
+			<c1>20</c1>
+		</lag_filter>
+		
+		<lag_filter name="/controls/switches/cabin-heat-lag">
+			<input>/controls/switches/cabin-heat-cmd</input>
+			<c1>20</c1>
+		</lag_filter>
+		
+		<lag_filter name="/controls/switches/defroster-lag">
+			<input>/controls/switches/defroster-cmd</input>
+			<c1>20</c1>
+		</lag_filter>
+		
+		<lag_filter name="/controls/engines/engine[0]/primer-pump-lag">
+			<input>/controls/engines/engine[0]/primer-pump</input>
+			<c1>20</c1>
+		</lag_filter>
+	
+	</channel>
+	
+	<channel name="Avionics Fan">
+		
+		<fcs_function name="libraries/av-fan-rpm-inc">
+			<function>
+				<sum>
+					<property>libraries/av-fan-rpm-switch</property>
+					<value>10.0</value>
+				</sum>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="libraries/av-fan-rpm-dec">
+			<function>
+				<difference>
+					<property>libraries/av-fan-rpm-switch</property>
+					<value>2.0</value>
+				</difference>
+			</function>
+		</fcs_function>
+		
+		<switch name="libraries/av-fan-rpm-switch">
+			<default value="libraries/av-fan-rpm-switch"/>
+			<test logic="AND" value="libraries/av-fan-rpm-inc">
+				/systems/electrical/bus/main ge 8
+				libraries/av-fan-rpm-switch lt 6450
+			</test>
+			<test logic="AND" value="libraries/av-fan-rpm-inc">
+				/systems/electrical/bus/main ge 8
+				libraries/av-fan-rpm-switch lt 6450
+			</test>
+			<test logic="AND" value="libraries/av-fan-rpm-dec">
+				/systems/electrical/bus/main lt 8
+				/systems/electrical/bus/main lt 8
+				libraries/av-fan-rpm-switch gt 0
+			</test>
+			<output>libraries/av-fan-rpm-switch</output>
+		</switch>
+	
+	</channel>
+
+</system>

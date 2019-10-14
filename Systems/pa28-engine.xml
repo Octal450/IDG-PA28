@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+
+<!-- Piper PA28 Engine -->
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<system name="PA28: Engine">
+	
+	<property value="0">fcs/egt-switch</property>
+	<property value="0">fcs/oil-temp-switch</property>
+	
+	<channel name="Magnetos-Starter" execrate="8">
+		
+		<switch name="fcs/magneto-l">
+			<default value="0"/>
+			<test logic="AND" value="1"> <!-- L -->
+				/systems/failures/eng/magneto-l ne 1
+				/controls/engines/engine[0]/magnetos-switch eq 2
+				/systems/electrical/bus/main ge 8
+			</test>
+			<test logic="AND" value="1"> <!-- BOTH or START -->
+				/systems/failures/eng/magneto-l ne 1
+				/controls/engines/engine[0]/magnetos-switch ge 3
+				/systems/electrical/bus/main ge 8
+			</test>
+		</switch>
+		
+		<switch name="fcs/magneto-r">
+			<default value="0"/>
+			<test logic="AND" value="1"> <!-- R -->
+				/systems/failures/eng/magneto-r ne 1
+				/controls/engines/engine[0]/magnetos-switch eq 1
+				/systems/electrical/bus/main ge 8
+			</test>
+			<test logic="AND" value="1"> <!-- BOTH or START -->
+				/systems/failures/eng/magneto-r ne 1
+				/controls/engines/engine[0]/magnetos-switch ge 3
+				/systems/electrical/bus/main ge 8
+			</test>
+		</switch>
+		
+		<switch name="fcs/magneto-final">
+			<default value="0"/>
+			<test logic="AND" value="3"> <!-- BOTH -->
+				fcs/magneto-l eq 1
+				fcs/magneto-r eq 1
+			</test>
+			<test logic="AND" value="2"> <!-- R -->
+				fcs/magneto-l ne 1
+				fcs/magneto-r eq 1
+			</test>
+			<test logic="AND" value="1"> <!-- L -->
+				fcs/magneto-l eq 1
+				fcs/magneto-r ne 1
+			</test>
+			<output>/controls/engines/engine[0]/magnetos</output>
+		</switch>
+		
+		<switch name="fcs/start-switch">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/systems/failures/eng/starter ne 1
+				fcs/magneto-l eq 1
+				/controls/engines/engine[0]/magnetos-switch eq 4
+			</test>
+			<test logic="AND" value="1">
+				/systems/failures/eng/starter ne 1
+				fcs/magneto-r eq 1
+				/controls/engines/engine[0]/magnetos-switch eq 4
+			</test>
+		</switch>
+	
+	</channel>
+	
+	<channel name="Engine">
+		
+		<lag_filter name="fcs/throttle-cmd-lag">
+			<input>/controls/engines/engine[0]/throttle</input>
+			<c1>20</c1>
+		</lag_filter>
+		
+		<lag_filter name="fcs/carb-heat-lever">
+			<input>/controls/anti-ice/engine[0]/carb-heat-cmd</input>
+			<c1>20</c1>
+			<output>/controls/anti-ice/engine[0]/carb-heat</output>
+		</lag_filter>
+		
+		<fcs_function name="fcs/carb-heat-factor">
+			<function>
+				<table>
+					<independentVar lookup="row">fcs/carb-heat-lever</independentVar>
+					<tableData>
+						0.0  0.15185
+						1.0  0.47500
+					</tableData>
+				</table>
+			</function>
+			<output>propulsion/engine[0]/air-intake-impedance-factor</output>
+		</fcs_function>
+		
+		<fcs_function name="fcs/throttle-cmd-modified">
+			<description>Tries to make RPM behave like the real plane</description>
+			<function>
+				<table>
+					<independentVar lookup="row">fcs/throttle-cmd-lag</independentVar>
+					<independentVar lookup="column">velocities/vc-kts</independentVar>
+					<tableData>
+						      30     60     90     120    140
+						0.00  0.000  0.000  0.000  0.000  0.000
+						0.16  0.420  0.386  0.365  0.351  0.325
+						0.48  0.740  0.680  0.643  0.617  0.573
+						0.80  0.950  0.874  0.827  0.793  0.736
+						1.00  1.000  0.920  0.870  0.835  0.775
+					</tableData>
+				</table>
+			</function>
+			<output>fcs/throttle-pos-norm[0]</output>
+			<clipto>
+				<min>0.0</min>
+				<max>1.0</max>
+			</clipto>
+		</fcs_function>
+		
+		<lag_filter name="fcs/mixture-cmd-lag">
+			<input>/controls/engines/engine[0]/mixture</input>
+			<c1>20</c1>
+		</lag_filter>
+		
+		<fcs_function name="fcs/mixture-cmd-modified">
+			<description>Tries to make RPM behave like the real plane</description>
+			<function>
+				<ifthen>
+					<eq> <!-- If the engine was smashed into the ground, kill it -->
+						<property>crash-stress/nose-damaged</property>
+						<value>1</value>
+					</eq>
+					<value>0</value>
+					<table>
+						<independentVar lookup="row">fcs/mixture-cmd-lag</independentVar>
+						<independentVar lookup="column">atmosphere/pressure-altitude</independentVar>
+						<tableData>
+							   0     15000
+							0  0.55  0.25
+							1  1.00  1.00
+						</tableData>
+					</table>
+				</ifthen>
+			</function>
+			<output>fcs/mixture-pos-norm[0]</output>
+		</fcs_function>
+		
+		<fcs_function name="fcs/oil-temp-inc">
+			<function>
+				<sum>
+					<property>fcs/oil-temp-switch</property>
+					<value>0.03</value>
+				</sum>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fcs/oil-temp-dec">
+			<function>
+				<difference>
+					<property>fcs/oil-temp-switch</property>
+					<value>0.01</value>
+				</difference>
+			</function>
+		</fcs_function>
+		
+		<switch name="fcs/oil-temp-switch">
+			<default value="fcs/oil-temp-switch"/>
+			<test logic="AND" value="fcs/oil-temp-inc">
+				/engines/engine[0]/running eq 1
+				fcs/oil-temp-switch lt 177
+			</test>
+			<test logic="AND" value="fcs/oil-temp-dec">
+				/engines/engine[0]/running ne 1
+				fcs/oil-temp-switch gt 0
+			</test>
+			<output>fcs/oil-temp-switch</output>
+		</switch>
+		
+		<fcs_function name="fcs/egt-inc">
+			<function>
+				<sum>
+					<property>fcs/egt-switch</property>
+					<value>0.4</value>
+				</sum>
+			</function>
+		</fcs_function>
+		
+		<fcs_function name="fcs/egt-dec">
+			<function>
+				<difference>
+					<property>fcs/egt-switch</property>
+					<value>0.1</value>
+				</difference>
+			</function>
+		</fcs_function>
+		
+		<switch name="fcs/egt-switch">
+			<default value="fcs/egt-switch"/>
+			<test logic="AND" value="fcs/egt-inc">
+				/engines/engine[0]/running eq 1
+				fcs/egt-switch lt 1028
+			</test>
+			<test logic="AND" value="fcs/egt-dec">
+				/engines/engine[0]/running ne 1
+				fcs/egt-switch gt 0
+			</test>
+			<output>fcs/egt-switch</output>
+		</switch>
+	
+	</channel>
+
+</system>

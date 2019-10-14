@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<!-- Piper PA28 JSBsim -->
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<metrics>
+	
+	<wingarea unit="FT2">170</wingarea>
+	<wingspan unit="FT">35</wingspan>
+	<chord unit="FT">5.25</chord>
+	<htailarea unit="FT2">37.18</htailarea>
+	<vtailarea unit="FT2">28.6</vtailarea>
+	
+	<location name="AERORP" unit="M">
+		<x>-1.07567</x>
+		<y>0</y>
+		<z>-0.07598</z>
+	</location>
+
+	<location name="EYEPOINT" unit="M">
+		<x>-1.78141</x>
+		<y>0</y>
+		<z>0.37593</z>
+	</location>
+
+	<location name="VRP" unit="M">
+		<x>0</x>
+		<y>0</y>
+		<z>0</z>
+	</location>
+
+</metrics>

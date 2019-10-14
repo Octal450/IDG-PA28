@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+	<sim>
+		<model>
+			<livery>
+				<name>N3077M</name>
+				<texture>Liveries/PA28-WarriorII.png</texture>
+			</livery>
+		</model>
+	</sim>
+</PropertyList>

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<!-- Piper PA28 JSBsim -->
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<mass_balance>
+	
+	<ixx unit="SLUG*FT2">1070</ixx>
+	<iyy unit="SLUG*FT2">1249</iyy>
+	<izz unit="SLUG*FT2">2312</izz>
+	<ixy unit="SLUG*FT2">0</ixy>
+	<ixz unit="SLUG*FT2">0</ixz>
+	<iyz unit="SLUG*FT2">0</iyz>
+	<emptywt unit="LBS">1201</emptywt>
+	
+	<location name="CG" unit="M">
+		<x>-1.07567</x>
+		<y>0</y>
+		<z>-0.07598</z>
+	</location>
+	
+	<pointmass name="Left Front Seat">
+		<weight unit="LBS">170</weight>
+		<location name="POINTMASS" unit="M">
+			<x>-1.07567</x>
+			<y>-0.27743</y>
+			<z>-0.07598</z>
+		</location>
+	</pointmass>
+	
+	<pointmass name="Right Front Seat">
+		<weight unit="LBS">170</weight>
+		<location name="POINTMASS" unit="M">
+			<x>-1.07567</x>
+			<y>0.27743</y>
+			<z>-0.07598</z>
+		</location>
+	</pointmass>
+	
+	<pointmass name="Left Rear Seat">
+		<weight unit="LBS">0</weight>
+		<location name="POINTMASS" unit="M">
+			<x>-1.07567</x>
+			<y>-0.27743</y>
+			<z>-0.07598</z>
+		</location>
+	</pointmass>
+	
+	<pointmass name="Right Rear Seat">
+		<weight unit="LBS">0</weight>
+		<location name="POINTMASS" unit="M">
+			<x>-1.07567</x>
+			<y>0.27743</y>
+			<z>-0.07598</z>
+		</location>
+	</pointmass>
+	
+	<pointmass name="Baggage Compartment">
+		<weight unit="LBS">0</weight>
+		<location name="POINTMASS" unit="M">
+			<x>-1.07567</x>
+			<y>0.16143</y>
+			<z>-0.07598</z>
+		</location>
+	</pointmass>
+
+</mass_balance>

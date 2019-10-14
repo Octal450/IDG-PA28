@@ -1,0 +1,780 @@
+<?xml version="1.0"?>
+
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<PropertyList>
+	
+	<sim>
+		<author>Immersive Design Group: Joshua Davidson (Octal450), Jonathan Redpath (legoboyvdlp), D-ECHO</author>
+		<chase-distance-m type="double" archive="y">-20.0</chase-distance-m>
+		<checklists include="PA28-Checklists.xml"/>
+		<current-view>
+			<z-offset-default type="float">20.0</z-offset-default>
+			<z-offset-min-m type="float">10.0</z-offset-min-m>
+			<z-offset-max-m type="float">200.0</z-offset-max-m>
+		</current-view>
+		<flaps>
+			<setting>0.000</setting>
+			<setting>0.250</setting>
+			<setting>0.625</setting>
+			<setting>1.000</setting>
+		</flaps>
+		<flight-recorder include="Systems/flight-recorder.xml"/>
+		<gui n="0" include="gui/it-gui.xml"/>
+		<hud n="0">
+			<enable3d n="0">false</enable3d>
+			<enable3d n="1">false</enable3d>
+		</hud>
+		<menubar>
+			<default>
+				<menu n="100">
+					<label>|</label>
+					<enabled type="bool">false</enabled>
+				</menu>
+				<menu n="101">
+					<label>System</label>
+					<enabled type="bool">true</enabled>
+					<item>
+						<label>Aircraft Config</label>
+						<binding>
+							<command>nasal</command>
+							<script>acconfig.main_dlg.open();</script>
+						</binding>
+					</item>
+					<item>
+						<label>About This Aircraft</label>
+						<binding>
+							<command>nasal</command>
+							<script>acconfig.about_dlg.open();</script>
+						</binding>
+					</item>
+				</menu>
+				<menu n="102">
+					<label>Utilities</label>
+					<enabled type="bool">true</enabled>
+					<item>
+						<label>Select Livery</label>
+						<binding>
+							<command>nasal</command>
+							<script>aircraft.livery.dialog.toggle();</script>
+						</binding>
+					</item>
+					<item>
+						<label>Mini Panel</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+								acconfig.minipanel_dlg.open();
+								setprop("/options/mini-panel", 1);
+								acconfig.writeSettings();
+							</script>
+						</binding>
+					</item>
+					<item>
+						<label>Control Panel</label>
+						<binding>
+							<command>nasal</command>
+							<script>acconfig.controlpanel_dlg.open();</script>
+						</binding>
+					</item>
+					<item>
+						<label>Failures</label>
+						<binding>
+							<command>nasal</command>
+							<script>acconfig.fail_dlg.open();</script>
+						</binding>
+					</item>
+					<item>
+						<label>Repair Aircraft</label>
+						<binding>
+							<command>nasal</command>
+							<script>
+								<![CDATA[
+									if (getprop("/position/gear-agl-ft") <= 1) {
+										libraries.crashStress.reset();
+										acconfig.failReset();
+									} else {
+										gui.popupTip("How can you repair the aircraft in flight? Please land first! :)");
+									}
+								]]>
+							</script>
+						</binding>
+					</item>
+				</menu>
+				<menu n="103">
+					<label>How To..?</label>
+					<enabled type="bool">true</enabled>
+					<item>
+						<label>Getting Started</label>
+						<enabled type="bool">false</enabled> <!-- Needs to be updated -->
+						<binding>
+							<command>open-browser</command>
+							<path>Aircraft/IDG-PA28/Docs/Cockpit.pdf</path>
+						</binding>
+					</item>
+					<item>
+						<label>General Settings</label>
+						<binding>
+							<command>open-browser</command>
+							<path>Aircraft/IDG-PA28/Docs/General_Settings.pdf</path>
+						</binding>
+					</item>
+					<item>
+						<label>Fuel Management</label>
+						<binding>
+							<command>open-browser</command>
+							<path>Aircraft/IDG-PA28/Docs/Fuel.pdf</path>
+						</binding>
+					</item>
+					<item>
+						<label>About Mini Panel</label>
+						<binding>
+							<command>open-browser</command>
+							<path>Aircraft/IDG-PA28/Docs/About_Mini_Panel.pdf</path>
+						</binding>
+					</item>
+				</menu>
+			</default>
+		</menubar>
+		<multiplay>
+			<generic>
+				<int n="0" alias="/fdm/jsbsim/crash-stress/nose-damaged"/>
+				<int n="1" alias="/fdm/jsbsim/crash-stress/lwing-damaged"/>
+				<int n="2" alias="/fdm/jsbsim/crash-stress/rwing-damaged"/>
+				<int n="3" alias="/fdm/jsbsim/crash-stress/htail-damaged"/>
+				<int n="4" alias="/fdm/jsbsim/crash-stress/vtail-damaged"/>
+				<bool n="0" alias="/options/wheel-fairing"/>
+				<float n="0" alias="/fdm/jsbsim/fcs/aileron-yoke"/>
+				<float n="1" alias="/fdm/jsbsim/fcs/pitch-input"/>
+				<float n="2" alias="/fdm/jsbsim/fcs/yaw-input"/>
+				<float n="3" alias="/fdm/jsbsim/fcs/steer-deg"/>
+				<float n="4" alias="/fdm/jsbsim/extra/door-main-norm"/>
+				<float n="5" alias="/fdm/jsbsim/extra/door-baggage-norm"/>
+				<string alias="/sim/multiplay/callsign"/>
+			</generic>
+		</multiplay>
+		<panel>
+			<visibility archive="y">false</visibility>
+		</panel>
+		<previews>
+			<preview>
+				<type>exterior</type>
+				<splash type="bool">true</splash>
+				<path>Splash/Splash1.png</path>
+			</preview>	
+		</previews>
+		<rating>
+			<FDM type="int">5</FDM>
+			<systems type="int">5</systems>
+			<cockpit type="int">4</cockpit>
+			<model type="int">4</model>
+		</rating>
+		<sound>
+			<path>Aircraft/IDG-PA28/Sounds/sound.xml</path>
+		</sound>
+		<startup>
+			<splash-texture>Aircraft/IDG-PA28/Splash/splash1.png</splash-texture>
+		</startup>
+		<status>Pre V1.0</status>
+		<systems>
+			<electrical>
+				<path></path>
+			</electrical>
+			<autopilot n="0">
+				<path>Aircraft/IDG-PA28/Systems/stec-55x.xml</path>
+			</autopilot>
+			<autopilot n="1">
+				<path>Aircraft/IDG-PA28/Systems/libraries.xml</path>
+			</autopilot>
+		</systems>
+		<tags>
+			<tag>ga</tag>
+			<tag>piper</tag>
+			<tag>1960s</tag>
+			<tag>1970s</tag>
+			<tag>1980s</tag>
+			<tag>1990s</tag>
+			<tag>2000s</tag>
+			<tag>ifr</tag>
+			<tag>fixed-gear</tag>
+			<tag>piston</tag>
+			<tag>1-engine</tag>
+		</tags>
+		<view n="0">
+			<name>Pilot View</name>
+			<internal archive="y">true</internal>
+			<config>
+				<x-offset-m archive="y">-0.26</x-offset-m>
+				<y-offset-m archive="y">0.44</y-offset-m>
+				<z-offset-m archive="y">-1.1</z-offset-m>
+				<pitch-offset-deg>-15</pitch-offset-deg>
+				<default-field-of-view-deg type="double">85</default-field-of-view-deg>
+			</config>
+		</view>
+		<view n="100">
+			<name>Copilot View</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<x-offset-m archive="y">0.26</x-offset-m>
+				<y-offset-m archive="y">0.44</y-offset-m>
+				<z-offset-m archive="y">-1.1</z-offset-m>
+				<pitch-offset-deg>-15</pitch-offset-deg>
+				<default-field-of-view-deg type="double">85</default-field-of-view-deg>
+			</config>
+		</view>
+		<view n="101">
+			<name>Right View</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<x-offset-m archive="y">0.26</x-offset-m>
+				<y-offset-m archive="y">0.44</y-offset-m>
+				<z-offset-m archive="y">-1.1</z-offset-m>
+				<pitch-offset-deg>-15</pitch-offset-deg>
+				<heading-offset-deg>-95</heading-offset-deg>
+				<default-field-of-view-deg type="double">85</default-field-of-view-deg>
+			</config>
+		</view>
+		<view n="102">
+			<name>Left View</name>
+			<type>lookfrom</type>
+			<internal archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<x-offset-m archive="y">-0.26</x-offset-m>
+				<y-offset-m archive="y">0.44</y-offset-m>
+				<z-offset-m archive="y">-1.1</z-offset-m>
+				<pitch-offset-deg>-15</pitch-offset-deg>
+				<heading-offset-deg>95</heading-offset-deg>
+				<default-field-of-view-deg type="double">85</default-field-of-view-deg>
+			</config>
+		</view>
+	</sim>
+	
+	<airport>
+		<runways>
+			<start-offset-m>20</start-offset-m>
+		</runways>
+	</airport>
+	
+	<consumables>
+		<fuel>
+			<tank n="0"><name type="string">Left Wing</name></tank>
+			<tank n="1"><name type="string">Right Wing</name></tank>
+			<tank n="2"><name type="string">Engine Pipe</name></tank>
+		</fuel>
+	</consumables>
+	
+	<controls n="0">
+		<anti-ice n="0">
+			<engine n="0">
+				<carb-heat-cmd type="bool">0</carb-heat-cmd>
+			</engine>
+		</anti-ice>
+		<electrical n="0">
+			<circuit-breakers n="0">
+				<alternator-field type="bool">0</alternator-field>
+				<autopilot type="bool">0</autopilot>
+				<fuel-pump type="bool">0</fuel-pump>
+				<transponder type="bool">0</transponder>
+				<trim type="bool">0</trim>
+				<turn-bank type="bool">0</turn-bank>
+			</circuit-breakers>
+			<switches n="0">
+				<alternator type="bool">0</alternator>
+				<avionics-master type="bool">0</avionics-master>
+				<avionics-secondary type="bool">0</avionics-secondary>
+				<battery type="bool">0</battery>
+			</switches>
+		</electrical>
+		<engines n="0">
+			<engine n="0">
+				<magnetos type="int">0</magnetos>
+				<magnetos-switch type="int">0</magnetos-switch>
+				<mixture type="double">0</mixture>
+				<primer-pump type="bool">0</primer-pump>
+			</engine>
+		</engines>
+		<flight n="0">
+			<aileron-drives-tiller type="bool">0</aileron-drives-tiller>
+			<elevator-trim type="double">0.11</elevator-trim>
+		</flight>
+		<fuel n="0">
+			<switches n="0">
+				<pump type="bool">0</pump>
+				<selected-tank type="int">1</selected-tank>
+			</switches>
+		</fuel>
+		<gear n="0">
+			<brake-parking type="double">0</brake-parking>
+		</gear>
+		<switches n="0">
+			<annun-test type="bool">0</annun-test>
+			<beacon type="bool">1</beacon>
+			<cabin-heat-cmd type="bool">0</cabin-heat-cmd>
+			<defroster-cmd type="bool">0</defroster-cmd>
+			<landing-light type="bool">0</landing-light>
+			<nav-lights type="double">0</nav-lights>
+			<nav-lights-factor type="double">0</nav-lights-factor>
+			<panel-lights-factor type="double">0</panel-lights-factor>
+			<pitot-heat type="bool">0</pitot-heat>
+			<strobe-lights type="bool">0</strobe-lights>
+		</switches>
+	</controls>
+	
+	<engines n="0">
+		<engine n="0">
+			<egt-actual type="double">0</egt-actual>
+			<egt-bug type="double">1400</egt-bug>
+		</engine>
+		<engine n="3">
+			<n1 type="double">0</n1> <!-- Hack to bring left brake pedal over MP -->
+			<n2 type="double">0</n2> <!-- Hack to bring right brake pedal over MP -->
+		</engine>
+	</engines>
+	
+	<environment>
+		<aircraft-effects>
+			<overlay-alpha type="double">0.5</overlay-alpha>
+		</aircraft-effects>
+	</environment>
+	
+	<fdm n="0">
+		<jsbsim n="0">
+			<crash-stress n="0">
+				<htail-damaged type="bool">0</htail-damaged>
+				<lwing-damaged type="bool">0</lwing-damaged>
+				<nose-damaged type="bool">0</nose-damaged>
+				<rwing-damaged type="bool">0</rwing-damaged>
+				<vtail-damaged type="bool">0</vtail-damaged>
+			</crash-stress>
+			<extra n="0">
+				<door-baggage-cmd type="double">0</door-baggage-cmd>
+				<door-main-cmd type="double">0</door-main-cmd>
+			</extra>
+		</jsbsim>
+	</fdm>
+	
+	<gear n="0">
+		<gear n="0">
+			<position-norm type="double">1</position-norm>
+			<tyre-smoke type="int">0</tyre-smoke>
+			<sprayspeed-ms type="double">0</sprayspeed-ms>
+			<spray-density type="double">0</spray-density>
+			<caster-angle-deg-damped type="double">0</caster-angle-deg-damped>
+		</gear>
+		<gear n="1">
+			<position-norm type="double">1</position-norm>
+			<tyre-smoke type="int">0</tyre-smoke>
+			<sprayspeed-ms type="double">0</sprayspeed-ms>
+			<spray-density type="double">0</spray-density>
+		</gear>
+		<gear n="2">
+			<position-norm type="double">1</position-norm>
+			<tyre-smoke type="int">0</tyre-smoke>
+			<sprayspeed-ms type="double">0</sprayspeed-ms>
+			<spray-density type="double">0</spray-density>
+		</gear>
+	</gear>
+	
+	<input n="0">
+		<keyboard n="0">
+			<key n="12">
+				<name>Ctrl-L</name>
+				<desc>toggle panel lights</desc>
+				<binding>
+					<command>property-cycle</command>
+					<property>/controls/switches/panel-lights-factor</property>
+					<value>1</value>
+					<value>0</value>
+				</binding>
+			</key>
+			<key n="24">
+				<name>Ctrl-x</name>
+				<desc>Reset zoom to default</desc>
+				<binding>
+					<command>nasal</command>
+					<script>libraries.fovZoom(0);</script>
+				</binding>
+			</key>
+			<key n="49">
+				<name>1</name>
+				<desc>Elevator trim up</desc>
+				<binding>
+					<command>nasal</command>
+					<script>controls.elevatorTrim(-1);</script>
+				</binding>
+				<mod-shift>
+					<desc>Look back left</desc>
+					<binding>
+						<command>property-assign</command>
+						<property>/sim/current-view/goal-heading-offset-deg</property>
+						<property>/sim/view/config/back-left-direction-deg</property>
+					</binding>
+				</mod-shift>
+			</key>
+			<key n="55">
+				<name>7</name>
+				<desc>Elevator trim down</desc>
+				<binding>
+					<command>nasal</command>
+					<script>controls.elevatorTrim(1);</script>
+				</binding>
+				<mod-shift>
+					<desc>Look front left</desc>
+					<binding>
+						<command>property-assign</command>
+						<property>/sim/current-view/goal-heading-offset-deg</property>
+						<property>/sim/view/config/front-left-direction-deg</property>
+					</binding>
+				</mod-shift>
+			</key>
+			<key n="66">
+				<name>B</name>
+				<desc>Toggle parking brake on or off</desc>
+				<binding>
+					<command>nasal</command>
+					<script>controls.applyParkingBrake(1)</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>nasal</command>
+						<script>controls.applyParkingBrake(0)</script>
+					</binding>
+				</mod-up>	
+			</key>
+			<key n="68">
+				<name>D</name>
+				<desc>Autopilot Disconnect</desc>
+				<binding>
+					<command>property-assign</command>
+					<property>/it-stec55x/input/disc</property>
+					<value>1</value>
+				</binding>
+				<binding>
+					<command>nasal</command>
+					<script>stec55x.button.DISC();</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>property-assign</command>
+						<property>/it-stec55x/input/disc</property>
+						<value>0</value>
+					</binding>
+				</mod-up>
+			</key>
+			<key n="88">
+				<name>X</name>
+				<desc>Increase field of view</desc>
+				<binding>
+					<command>nasal</command>
+					<script>libraries.fovZoom(1);</script>
+				</binding>
+			</key>
+			<key n="99">
+				<name>c</name>
+				<desc>S-TEC 55X CWS Button</desc>
+				<binding>
+					<command>nasal</command>
+					<script>stec55x.button.CWS(1);</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>nasal</command>
+						<script>stec55x.button.CWS(0);</script>
+					</binding>
+				</mod-up>
+			</key>
+			<key n="101">
+				<name>e</name>
+				<desc>Thrust Lever Idle</desc>
+				<binding>
+					<command>nasal</command>
+					<script>libraries.doIdleThrust();</script>
+				</binding>
+			</key>
+			<key n="102">
+				<name>f</name>
+				<desc>Thrust Lever Full</desc>
+				<binding>
+					<command>nasal</command>
+					<script>libraries.doFullThrust();</script>
+				</binding>
+			</key>
+			<key n="106">
+				<name>j</name>
+				<desc>toggle tanks</desc>
+				<binding>
+					<command>property-cycle</command>
+					<property>/systems/fuel/selected-tank</property>
+					<value>1</value>
+					<value>2</value>
+				</binding>
+			</key>
+			<key n="115">
+				<name>s</name>
+				<desc>Kill starter-key</desc>
+				<binding>
+					<command>nasal</command>
+					<script></script>
+				</binding>
+			</key>
+			<key n="120">
+				<name>x</name>
+				<desc>Decrease field of view</desc>
+				<binding>
+					<command>nasal</command>
+					<script>libraries.fovZoom(-1);</script>
+				</binding>
+			</key>
+			<key n="362">
+				<name>Home</name>
+				<desc>Elevator Trim Down</desc>
+				<binding>
+					<command>nasal</command>
+					<script>controls.elevatorTrim(1);</script>
+				</binding>
+			</key>
+			<key n="363">
+				<name>End</name>
+				<desc>Elevator Trim Up</desc>
+				<binding>
+					<command>nasal</command>
+					<script>controls.elevatorTrim(-1);</script>
+				</binding>
+			</key>
+		</keyboard>
+		<mice n="0">
+			<mouse n="0">
+				<mode n="0">
+					<button n="3">
+						<binding n="0">
+							<script></script>
+						</binding>
+						<binding n="1">
+							<condition>
+								<and>
+									<property>/devices/status/mice/mouse[0]/button[2]</property>
+									<not><property>/sim/mouse/right-button-mode-cycle-enabled</property></not>
+								</and>
+							</condition>
+							<command>nasal</command>
+							<script>libraries.fovZoom(-1);</script>
+						</binding>
+					</button>
+					<button n="4">
+						<binding n="0">
+							<script></script>
+						</binding>
+						<binding n="1">
+							<condition>
+								<and>
+									<property>/devices/status/mice/mouse[0]/button[2]</property>
+									<not><property>/sim/mouse/right-button-mode-cycle-enabled</property></not>
+								</and>
+							</condition>
+							<command>nasal</command>
+							<script>libraries.fovZoom(1);</script>
+						</binding>
+					</button>
+				</mode>
+			</mouse>
+		</mice>
+	</input>
+	
+	<instrumentation n="0">
+		<attitude-indicator>
+			<config>
+				<tumble-flag>true</tumble-flag>
+			</config>
+		</attitude-indicator>
+		<comm n="0">
+			<frequencies>
+				<selected-mhz type="double">118.7</selected-mhz>
+				<standby-mhz type="double">121.4</standby-mhz>
+			</frequencies>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0.6</volume>
+		</comm>
+		<comm n="1">
+			<frequencies>
+				<selected-mhz type="double">119.4</selected-mhz>
+				<standby-mhz type="double">122.6</standby-mhz>
+			</frequencies>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0.6</volume>
+		</comm>
+		<dme>
+			<switch-position type="int">1</switch-position>
+			<volume type="double">0</volume>
+		</dme>
+		<elt>
+			<armed type="bool">false</armed>
+			<on type="bool">true</on>
+			<on-pos type="double">1</on-pos>
+			<test type="bool">false</test>
+		</elt>
+		<nav n="0">
+			<frequencies>
+				<selected-mhz type="double">111.15</selected-mhz>
+				<standby-mhz type="double">110.95</standby-mhz>
+			</frequencies>
+			<radials>
+				<selected-deg type="double">360</selected-deg>
+			</radials>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0</volume>
+		</nav>
+		<nav n="1">
+			<frequencies>
+				<selected-mhz type="double">109.55</selected-mhz>
+				<standby-mhz type="double">110.55</standby-mhz>
+			</frequencies>
+			<radials>
+				<selected-deg type="double">360</selected-deg>
+			</radials>
+			<serviceable type="bool">true</serviceable>
+			<volume type="double">0</volume>
+		</nav>
+	</instrumentation>
+	
+	<it-stec55x n="0"> <!-- S-TEC 55X Settings -->
+		<internal n="0">
+			<aileron type="double">0</aileron>
+			<elevator type="double">0</elevator>
+			<servo-roll-power type="bool">0</servo-roll-power>
+			<servo-pitch-power type="bool">0</servo-pitch-power>
+		</internal>
+		<output n="0">
+			<roll type="int">-1</roll>
+			<pitch type="int">-1</pitch>
+		</output>
+		<settings n="0">
+			<fd-equipped type="bool">0</fd-equipped> <!-- Does the aircraft have a flight director installed? -->
+			<gain-pitch type="double">1.0</gain-pitch> <!-- Modify the pitch axis gain -->
+			<gain-roll type="double">1.0</gain-roll> <!-- Modify the roll axis gain -->
+			<gain-yaw type="double">1.0</gain-yaw> <!-- Modify the yaw axis gain -->
+			<hsi-equipped-1 type="bool">1</hsi-equipped-1> <!-- Does the aircraft have an HSI or OBS for NAV1? -->
+			<hsi-equipped-2 type="bool">0</hsi-equipped-2> <!-- Does the aircraft have an HSI or OBS for NAV2? -->
+			<is-turboprop type="bool">0</is-turboprop> <!-- Does the aircraft have turboprop engines? -->
+			<use-controls-flight type="bool">0</use-controls-flight> <!-- Use generic /controls/flight for flight controls instead of custom properties -->
+			<yd-equipped type="bool">0</yd-equipped> <!-- Does the aircraft have the optional yaw damper installed? -->
+		</settings>
+	</it-stec55x>
+	
+	<options n="0">
+		<mini-panel type="bool">0</mini-panel>
+		<nav-source type="int">1</nav-source>
+		<panel type="string">HSI Panel</panel>
+		<show-l-yoke type="bool">1</show-l-yoke>
+		<show-r-yoke type="bool">1</show-r-yoke>
+		<wip type="bool">0</wip> <!-- Enable the WIP instruments -->
+	</options>
+	
+	<payload>
+		<weight n="0">
+			<name>Left Front Seat</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+			<min-lb type="double">90</min-lb>
+			<max-lb type="double">200</max-lb>
+		</weight>
+		<weight n="1">
+			<name>Right Front Seat</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">200</max-lb>
+		</weight>
+		<weight n="2">
+			<name>Left Rear Seat</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">200</max-lb>
+		</weight>
+		<weight n="3">
+			<name>Right Rear Seat</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">200</max-lb>
+		</weight>
+		<weight n="4">
+			<name>Baggage Compartment</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]"/>
+			<min-lb type="double">0</min-lb>
+			<max-lb type="double">200</max-lb>
+		</weight>
+	</payload>
+	
+	<systems n="0">
+		<electrical n="0">
+			<sources n="0">
+				<bat n="0">
+					<percent type="double">100</percent>
+				</bat>
+			</sources>
+		</electrical>
+		<failures n="0">
+			<electrical n="0">
+				<alternator type="bool">0</alternator>
+				<avionics-bus type="bool">0</avionics-bus>
+				<battery type="bool">0</battery>
+			</electrical>
+			<eng n="0">
+				<magneto-l type="bool">0</magneto-l>
+				<magneto-r type="bool">0</magneto-r>
+				<starter type="bool">0</starter>
+			</eng>
+			<fuel n="0">
+				<eng-suck type="bool">0</eng-suck>
+				<pump type="bool">0</pump>
+			</fuel>
+			<misc n="0">
+				<brake-l type="bool">0</brake-l>
+				<brake-r type="bool">0</brake-r>
+				<stec-55x type="bool">0</stec-55x>
+			</misc>
+		</failures>
+		<vacuum n="0">
+			<suction-inhg-actual type="double">0</suction-inhg-actual>
+		</vacuum>
+	</systems>
+	
+	<nasal n="0">
+		<setup>
+			<script>aircraft.livery.init("Aircraft/IDG-PA28/Models/Liveries");</script>
+		</setup>
+		<pts>
+			<file>Aircraft/IDG-PA28/Nasal/property-tree-setup.nas</file>
+		</pts>
+		<libraries>
+			<file>Aircraft/IDG-PA28/Nasal/libraries.nas</file>
+			<file>Aircraft/IDG-PA28/Models/Instruments/ELT/ELTmessage.nas</file>
+			<file>Aircraft/IDG-PA28/Nasal/ki266.nas</file>
+			<file>Aircraft/IDG-PA28/Nasal/zoom-views.nas</file>
+			<file>Aircraft/IDG-PA28/Nasal/crash-stress.nas</file>
+			<script>ki266.new(0);</script>
+		</libraries>
+		<acconfig>
+			<file>Aircraft/IDG-PA28/AircraftConfig/acconfig.nas</file>
+		</acconfig>
+		<systems>
+			<file>Aircraft/IDG-PA28/Nasal/systems.nas</file>
+		</systems>
+		<stec55x>
+			<file>Aircraft/IDG-PA28/Nasal/stec-55x.nas</file>
+		</stec55x>
+		<gtx327>
+			<file>Aircraft/IDG-PA28/Nasal/gtx-327.nas</file>
+		</gtx327>
+		<lights>
+			<file>Aircraft/IDG-PA28/Nasal/light-manager.nas</file>
+		</lights>
+		<HobbsMeter>
+			<file>Aircraft/IDG-PA28/Models/Instruments/Hobbs/hobbs.nas</file>
+			<script>HobbsMeter.new(index: 0, switchPath: 'gear/gear/wow', inverted: 1);</script>
+		</HobbsMeter>
+	</nasal>
+
+</PropertyList>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<!-- PA28-161 Control Panel Dialog -->
+
+<PropertyList>
+	
+	<name>mini-panel</name>
+	<layout>vbox</layout>
+	<x>0</x>
+	<y>0</y>
+	
+	<button>
+		<pref-width>20</pref-width>
+		<pref-height>20</pref-height>
+		<legend>X</legend>
+		<binding>
+			<command>nasal</command>
+			<script>
+			setprop("/options/mini-panel", 0);
+			acconfig.writeSettings();
+			</script>
+		</binding>
+		<binding>
+			<command>dialog-close</command>
+		</binding>
+	</button>
+	
+	<button>
+		<pref-width>20</pref-width>
+		<pref-height>20</pref-height>
+		<legend>?</legend>
+		<binding>
+			<command>open-browser</command>
+			<path>Aircraft/IDG-PA28/Docs/About_Mini_Panel.pdf</path>
+		</binding>
+	</button>
+	
+	<hrule/>
+	
+	<button>
+		<pref-width>20</pref-width>
+		<pref-height>20</pref-height>
+		<legend>A</legend>
+		<binding>
+			<command>nasal</command>
+			<script>
+			acconfig.main_dlg.open();
+			</script>
+		</binding>
+	</button>
+	
+	<button>
+		<pref-width>20</pref-width>
+		<pref-height>20</pref-height>
+		<legend>C</legend>
+		<binding>
+			<command>nasal</command>
+			<script>
+			acconfig.controlpanel_dlg.open();
+			</script>
+		</binding>
+	</button>
+	
+	<button>
+		<pref-width>20</pref-width>
+		<pref-height>20</pref-height>
+		<legend>=</legend>
+		<binding>
+			<command>dialog-show</command>
+			<dialog-name>checklist</dialog-name>
+		</binding>
+	</button>
+	
+	<button>
+		<pref-width>20</pref-width>
+		<pref-height>20</pref-height>
+		<legend>&lt;&gt;</legend>
+		<binding>
+			<command>property-cycle</command>
+			<property>/systems/fuel/selected-tank</property>
+			<value>1</value>
+			<value>2</value>
+		</binding>
+	</button>
+
+</PropertyList>

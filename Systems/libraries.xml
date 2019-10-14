@@ -1,0 +1,405 @@
+<?xml version="1.0"?>
+
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<PropertyList>
+
+	<filter>
+		<name>Gear AGL Altitude FT</name>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<input>
+			<expression>
+				<dif>
+					<property>/position/altitude-agl-ft</property>
+					<value>3.42</value>
+				</dif>
+			</expression>
+		</input>
+		<output>/position/gear-agl-ft</output>
+	</filter>
+	
+	<filter>
+		<name>Gear AGL Altitude M</name>
+		<type>gain</type>
+		<gain>1.0</gain>
+		<input>
+			<expression>
+				<product>
+					<property>/position/gear-agl-ft</property>
+					<value>0.3048</value>
+				</product>
+			</expression>
+		</input>
+		<output>/position/gear-agl-m</output>
+	</filter>
+	
+	<logic> <!-- Because this is a "bound" property, whatever that is, so directly from JSBsim doesn't work... -->
+		<name>Starter Command</name>
+		<input>
+			<equals>
+				<property>/fdm/jsbsim/fcs/start-switch</property>
+				<value>1</value>
+			</equals>
+		</input>
+		<output>/controls/engines/engine[0]/starter</output>
+	</logic>
+	
+	<filter>
+		<name>CDI0 lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>/instrumentation/nav[0]/heading-needle-deflection-norm</input>
+		<output>/instrumentation/nav[0]/heading-needle-deflection-norm-lag</output>
+		<filter-time>0.64</filter-time>
+	</filter>
+
+	<filter>
+		<name>CDI1 lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>/instrumentation/nav[1]/heading-needle-deflection-norm</input>
+		<output>/instrumentation/nav[1]/heading-needle-deflection-norm-lag</output>
+		<filter-time>0.64</filter-time>
+	</filter>
+
+	<filter>
+		<name>GS0 lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>/instrumentation/nav[0]/gs-needle-deflection-norm</input>
+		<output>/instrumentation/nav[0]/gs-needle-deflection-norm-lag</output>
+		<filter-time>0.64</filter-time>
+	</filter>
+
+	<filter>
+		<name>GS1 lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>/instrumentation/nav[1]/gs-needle-deflection-norm</input>
+		<output>/instrumentation/nav[1]/gs-needle-deflection-norm-lag</output>
+		<filter-time>0.64</filter-time>
+	</filter>
+	
+	<filter>
+		<name>NAV0 FLAG</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>
+			<condition>
+				<less-than>
+					<property>/systems/electrical/outputs/nav[0]</property>
+					<value>8</value>
+				</less-than>
+			</condition>
+			<value>0</value>
+		</input>
+		<input>/instrumentation/nav[0]/in-range</input>
+		<output>/instrumentation/nav[0]/nav-flag</output>
+		<filter-time>0.64</filter-time>
+	</filter>
+	
+	<filter>
+		<name>GS0 FLAG</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>
+			<condition>
+				<or>
+					<not><property>/instrumentation/nav[0]/has-gs</property></not>
+					<less-than>
+						<property>/systems/electrical/outputs/nav[0]</property>
+						<value>8</value>
+					</less-than>
+				</or>
+			</condition>
+			<value>0</value>
+		</input>
+		<input>/instrumentation/nav[0]/in-range</input>
+		<output>/instrumentation/nav[0]/gs-flag</output>
+		<filter-time>0.64</filter-time>
+	</filter>
+	
+	<filter>
+		<name>NAV1 FLAG</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>
+			<condition>
+				<less-than>
+					<property>/systems/electrical/outputs/nav[1]</property>
+					<value>8</value>
+				</less-than>
+			</condition>
+			<value>0</value>
+		</input>
+		<input>/instrumentation/nav[1]/in-range</input>
+		<output>/instrumentation/nav[1]/nav-flag</output>
+		<filter-time>0.64</filter-time>
+	</filter>
+	
+	<filter>
+		<name>GS1 FLAG</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>
+			<condition>
+				<or>
+					<not><property>/instrumentation/nav[1]/has-gs</property></not>
+					<less-than>
+						<property>/systems/electrical/outputs/nav[1]</property>
+						<value>8</value>
+					</less-than>
+				</or>
+			</condition>
+			<value>0</value>
+		</input>
+		<input>/instrumentation/nav[1]/in-range</input>
+		<output>/instrumentation/nav[1]/gs-flag</output>
+		<filter-time>0.64</filter-time>
+	</filter>
+	
+	<!-- Instrument filters -->
+	
+	<filter>
+		<name>Airspeed Indicator lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>/instrumentation/airspeed-indicator/indicated-speed-kt</input>
+		<output>/instrumentation/airspeed-indicator/indicated-speed-kt-lowpass</output>
+		<filter-time>0.04</filter-time>
+	</filter>
+	
+	<predict-simple>
+		<name>Airspeed Indicator Delay</name>
+		<debug>false</debug>
+		<input>/instrumentation/airspeed-indicator/indicated-speed-kt-lowpass</input>
+		<output>/instrumentation/airspeed-indicator/indicated-speed-kt-actual</output>
+		<seconds>-1.0</seconds>
+		<filter-gain>0.1</filter-gain>
+	</predict-simple>
+	
+	<filter>
+		<name>Attitude Indicator Roll lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>/instrumentation/attitude-indicator/indicated-roll-deg</input>
+		<output>/instrumentation/attitude-indicator/indicated-roll-deg-actual</output>
+		<filter-time>0.04</filter-time>
+	</filter>
+	
+	<filter>
+		<name>Attitude Indicator Pitch lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>/instrumentation/attitude-indicator/indicated-pitch-deg</input>
+		<output>/instrumentation/attitude-indicator/indicated-pitch-deg-actual</output>
+		<filter-time>0.04</filter-time>
+	</filter>
+	
+	<filter>
+		<name>Vertical Speed Indicator lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>
+			<expression> <!-- Pressure Rate to Vertical Speed FPM -->
+				<product>
+					<property>/it-stec55x/internal/pressure-rate</property>
+					<value>-58000</value>
+				</product>
+			</expression>
+		</input>
+		<output>/instrumentation/vertical-speed-indicator/indicated-speed-fpm-lowpass</output>
+		<filter-time>0.16</filter-time>
+	</filter>
+	
+	<predict-simple>
+		<name>Vertical Speed Indicator Delay</name>
+		<debug>false</debug>
+		<input>/instrumentation/vertical-speed-indicator/indicated-speed-fpm-lowpass</input>
+		<output>/instrumentation/vertical-speed-indicator/indicated-speed-fpm-actual</output>
+		<seconds>-1.0</seconds>
+		<filter-gain>0.1</filter-gain>
+	</predict-simple>
+	
+	<filter>
+		<name>Ampere lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>/systems/electrical/sources/alt/amp-calc</input>
+		<output>/systems/electrical/sources/alt/amp-calc-lag</output>
+		<filter-time>0.16</filter-time>
+	</filter>
+	
+	<filter>
+		<name>EGT lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>
+			<condition>
+				<less-than>
+					<property>/systems/electrical/bus/main</property>
+					<value>8</value>
+				</less-than>
+			</condition>
+			<value>0</value>
+		</input>
+		<input>/fdm/jsbsim/fcs/egt-switch</input>
+		<output>/engines/engine[0]/egt-actual</output>
+		<filter-time>0.16</filter-time>
+		<min>0</min>
+		<max>1800</max>
+	</filter>
+	
+	<filter>
+		<name>Left Tank lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>
+			<condition>
+				<less-than>
+					<property>/systems/electrical/bus/main</property>
+					<value>8</value>
+				</less-than>
+			</condition>
+			<value>0</value>
+		</input>
+		<input>/consumables/fuel/tank[0]/level-gal_us</input>
+		<output>/consumables/fuel/tank[0]/level-gal_us-lag</output>
+		<filter-time>0.16</filter-time>
+	</filter>
+	
+	<filter>
+		<name>Oil Temp lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>
+			<condition>
+				<less-than>
+					<property>/systems/electrical/bus/main</property>
+					<value>8</value>
+				</less-than>
+			</condition>
+			<value>0</value>
+		</input>
+		<input>/fdm/jsbsim/fcs/oil-temp-switch</input>
+		<output>/engines/engine[0]/oil-temperature-actual</output>
+		<filter-time>0.16</filter-time>
+	</filter>
+	
+	<filter>
+		<name>Fuel Pressure lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>
+			<condition>
+				<less-than>
+					<property>/systems/electrical/bus/main</property>
+					<value>8</value>
+				</less-than>
+			</condition>
+			<value>0</value>
+		</input>
+		<input>/systems/fuel/pressure-psi</input>
+		<output>/engines/engine[0]/fuel-pressure-actual</output>
+		<filter-time>0.16</filter-time>
+	</filter>
+	
+	<filter>
+		<name>Oil Pressure lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>
+			<condition>
+				<less-than>
+					<property>/systems/electrical/bus/main</property>
+					<value>8</value>
+				</less-than>
+			</condition>
+			<value>0</value>
+		</input>
+		<input>
+			<expression>
+				<table>
+					<property>/engines/engine[0]/rpm</property> 
+					<entry><ind> 200</ind><dep> 0</dep></entry>
+					<entry><ind> 500</ind><dep>60</dep></entry>
+					<entry><ind>2900</ind><dep>75</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/engines/engine[0]/oil-pressure-actual</output>
+		<filter-time>0.16</filter-time>
+	</filter>
+	
+	<filter>
+		<name>Right Tank lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>
+			<condition>
+				<less-than>
+					<property>/systems/electrical/bus/main</property>
+					<value>8</value>
+				</less-than>
+			</condition>
+			<value>0</value>
+		</input>
+		<input>/consumables/fuel/tank[1]/level-gal_us</input>
+		<output>/consumables/fuel/tank[1]/level-gal_us-lag</output>
+		<filter-time>0.16</filter-time>
+	</filter>
+	
+	<filter>
+		<name>Suction lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>
+			<condition>
+				<less-than>
+					<property>/systems/electrical/bus/main</property>
+					<value>8</value>
+				</less-than>
+			</condition>
+			<value>0</value>
+		</input>
+		<input>
+			<expression>
+				<table>
+					<property>/engines/engine[0]/rpm</property> 
+					<entry><ind> 300</ind><dep>0.0</dep></entry>
+					<entry><ind> 500</ind><dep>4.4</dep></entry>
+					<entry><ind>2900</ind><dep>5.1</dep></entry>
+				</table>
+			</expression>
+		</input>
+		<output>/systems/vacuum/suction-inhg-actual</output>
+		<filter-time>0.16</filter-time>
+		<min>0</min>
+		<max>1800</max>
+	</filter>
+	
+	<!-- Sounds -->
+	
+	<filter>
+		<name>Avionics Fan lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>/fdm/jsbsim/libraries/av-fan-rpm-feedback</input>
+		<output>/fdm/jsbsim/libraries/av-fan-rpm</output>
+		<filter-time>0.32</filter-time>
+	</filter>
+	
+	<!-- Lighting -->
+	
+	<filter>
+		<name>Panel Lights lowpass</name>
+		<debug>false</debug>
+		<type>exponential</type>
+		<input>/controls/lighting/panel-lights-cmd</input>
+		<output>/controls/lighting/panel-norm</output>
+		<filter-time>0.64</filter-time>
+	</filter>
+
+</PropertyList>
+

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<!-- PA28-161 Control Panel Dialog -->
+
+<PropertyList>
+	
+	<name>aircraft-config-fail</name>
+	<layout>vbox</layout>
+	
+	<group>
+		<layout>hbox</layout>
+		<text>
+			<halign>left</halign>
+			<label>System Failures</label>
+		</text>
+		<button>
+			<halign>right</halign>
+			<pref-width>20</pref-width>
+			<pref-height>20</pref-height>
+			<legend>X</legend>
+			<key>Esc</key>
+			<binding>
+				<command>dialog-close</command>
+			</binding>
+		</button>
+	</group>
+	
+	<hrule/>
+	
+	<text>
+		<halign>left</halign>
+		<label>Failed when Checked</label>
+	</text>
+	
+	<group>
+		<layout>hbox</layout>
+
+		<hrule>
+			<stretch type="bool">true</stretch>
+		</hrule>
+		<text>
+			<label>ELEC SYS Fail</label>
+		</text>
+		<hrule>
+			<stretch type="bool">true</stretch>
+		</hrule>
+	</group>
+	
+	<checkbox>
+		<label>Battery</label>
+		<halign>left</halign>
+		<property>/systems/failures/electrical/battery</property>
+		<binding>
+			<command>dialog-apply</command>
+		</binding>
+		<live>true</live>
+	</checkbox>
+	
+	<checkbox>
+		<label>Alternator</label>
+		<halign>left</halign>
+		<property>/systems/failures/electrical/alternator</property>
+		<binding>
+			<command>dialog-apply</command>
+		</binding>
+		<live>true</live>
+	</checkbox>
+	
+	<checkbox>
+		<label>Avionics Bus</label>
+		<halign>left</halign>
+		<property>/systems/failures/electrical/avionics-bus</property>
+		<binding>
+			<command>dialog-apply</command>
+		</binding>
+		<live>true</live>
+	</checkbox>
+	
+	<group>
+		<layout>hbox</layout>
+
+		<hrule>
+			<stretch type="bool">true</stretch>
+		</hrule>
+		<text>
+			<label>FUEL SYS Fail</label>
+		</text>
+		<hrule>
+			<stretch type="bool">true</stretch>
+		</hrule>
+	</group>
+	
+	<checkbox>
+		<label>Eng Suck</label>
+		<halign>left</halign>
+		<property>/systems/failures/fuel/eng-suck</property>
+		<binding>
+			<command>dialog-apply</command>
+		</binding>
+		<live>true</live>
+	</checkbox>
+	
+	<checkbox>
+		<label>Fuel Pump</label>
+		<halign>left</halign>
+		<property>/systems/failures/fuel/pump</property>
+		<binding>
+			<command>dialog-apply</command>
+		</binding>
+		<live>true</live>
+	</checkbox>
+	
+	<group>
+		<layout>hbox</layout>
+
+		<hrule>
+			<stretch type="bool">true</stretch>
+		</hrule>
+		<text>
+			<label>ENG SYS Fail</label>
+		</text>
+		<hrule>
+			<stretch type="bool">true</stretch>
+		</hrule>
+	</group>
+	
+	<checkbox>
+		<label>STARTER</label>
+		<halign>left</halign>
+		<property>/systems/failures/eng/starter</property>
+		<binding>
+			<command>dialog-apply</command>
+		</binding>
+		<live>true</live>
+	</checkbox>
+	
+	<checkbox>
+		<label>L MAGNETO</label>
+		<halign>left</halign>
+		<property>/systems/failures/eng/magneto-l</property>
+		<binding>
+			<command>dialog-apply</command>
+		</binding>
+		<live>true</live>
+	</checkbox>
+	
+	<checkbox>
+		<label>R MAGNETO</label>
+		<halign>left</halign>
+		<property>/systems/failures/eng/magneto-r</property>
+		<binding>
+			<command>dialog-apply</command>
+		</binding>
+		<live>true</live>
+	</checkbox>
+	
+	<group>
+		<layout>hbox</layout>
+
+		<hrule>
+			<stretch type="bool">true</stretch>
+		</hrule>
+		<text>
+			<label>OTHER SYS Fail</label>
+		</text>
+		<hrule>
+			<stretch type="bool">true</stretch>
+		</hrule>
+	</group>
+	
+	<checkbox>
+		<label>L BRAKE</label>
+		<halign>left</halign>
+		<property>/systems/failures/misc/brake-l</property>
+		<binding>
+			<command>dialog-apply</command>
+		</binding>
+		<live>true</live>
+	</checkbox>
+	
+	<checkbox>
+		<label>R BRAKE</label>
+		<halign>left</halign>
+		<property>/systems/failures/misc/brake-r</property>
+		<binding>
+			<command>dialog-apply</command>
+		</binding>
+		<live>true</live>
+	</checkbox>
+	
+	<checkbox>
+		<label>S-TEC 55X</label>
+		<halign>left</halign>
+		<property>/systems/failures/misc/stec-55x</property>
+		<binding>
+			<command>dialog-apply</command>
+		</binding>
+		<live>true</live>
+	</checkbox>
+	
+	<hrule/>
+	
+	<button>
+		<legend>Reset All</legend>
+		<halign>center</halign>
+		<padding>5</padding>
+		<pref-width>120</pref-width>
+		<binding>
+			<command>nasal</command>
+			<script>acconfig.failReset();</script>
+		</binding>
+	</button>
+
+</PropertyList>

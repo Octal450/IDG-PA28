@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- S-TEC Fifty Five X Autopilot Control Dialog -->
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<PropertyList>
+
+	<name>autopilot</name>
+	<layout>vbox</layout>
+	
+	<group>
+		<row>0</row>
+		<col>0</col>
+		<layout>hbox</layout>
+		<text>
+			<halign>left</halign>
+			<label>IT-AUTOFLIGHT System (S-TEC Fifty Five X)</label>
+		</text>
+		<empty><stretch>1</stretch></empty>
+		
+		<group>
+			<layout>table</layout>
+			
+			<button>
+				<row>0</row>
+				<col>0</col>
+				<halign>right</halign>
+				<pref-width>20</pref-width>
+				<pref-height>20</pref-height>
+				<legend>?</legend>
+				<binding>
+					<command>nasal</command>
+					<script>gui.popupTip("Please refer to the POH, this autopilot operates as per the manual.");</script>
+				</binding>
+			</button>
+			<button>
+				<row>0</row>
+				<col>1</col>
+				<halign>right</halign>
+				<pref-width>20</pref-width>
+				<pref-height>20</pref-height>
+				<legend>X</legend>
+				<key>Esc</key>
+				<binding>
+					<command>dialog-close</command>
+				</binding>
+			</button>
+		</group>
+	</group>
+	
+	<hrule/>
+	
+	<group>
+		<layout>table</layout>
+		
+		<text>
+			<row>0</row>
+			<col>0</col>
+			<label>HDG</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/hdg</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>0</row>
+			<col>1</col>
+			<label>NAV</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/nav</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>0</row>
+			<col>2</col>
+			<label>APR</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/apr</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>0</row>
+			<col>3</col>
+			<label>REV</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/rev</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>0</row>
+			<col>4</col>
+			<label>TRIM</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/trim</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>0</row>
+			<col>5</col>
+			<label>ALT</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/alt</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>0</row>
+			<col>6</col>
+			<label>GS</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/gs</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>0</row>
+			<col>7</col>
+			<label>VS</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/vs</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>0</col>
+			<label>RDY</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/rdy</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>1</col>
+			<label>CWS</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/cws</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>2</col>
+			<label>FAIL</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/fail</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>3</col>
+			<label>GPSS</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/gpss</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>4</col>
+			<label>UP</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/up</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>4</col>
+			<label>DN</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/dn</property>
+					<value>1</value>
+				</equals>
+			</visible>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>6</col>
+			<label>+</label>
+			<visible>
+				<and>
+					<equals>
+						<property>it-stec55x/annun/vs-sign</property>
+						<value>1</value>
+					</equals>
+					<greater-than-equals>
+						<property>/it-stec55x/input/vs</property>
+						<value>0</value>
+					</greater-than-equals>
+				</and>
+			</visible>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>6</col>
+			<label>-</label>
+			<visible>
+				<and>
+					<equals>
+						<property>it-stec55x/annun/vs-sign</property>
+						<value>1</value>
+					</equals>
+					<less-than>
+						<property>/it-stec55x/input/vs</property>
+						<value>0</value>
+					</less-than>
+				</and>
+			</visible>
+		</text>
+		
+		<text>
+			<row>1</row>
+			<col>7</col>
+			<label>99</label>
+			<visible>
+				<equals>
+					<property>/it-stec55x/annun/vs-digit</property>
+					<value>1</value>
+				</equals>
+			</visible>
+			<property>/it-stec55x/input/vs-abs</property>
+			<live>1</live>
+		</text>
+	</group>
+	
+	<hrule/>
+	
+	<group>
+		<layout>hbox</layout>
+		
+		<button>
+			<legend>HDG</legend>
+			<pref-width>40</pref-width>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.HDG();</script>
+			</binding>
+		</button>
+		
+		<button>
+			<legend>NAV</legend>
+			<pref-width>40</pref-width>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.NAV();</script>
+			</binding>
+		</button>
+		
+		<button>
+			<legend>APR</legend>
+			<pref-width>40</pref-width>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.APR();</script>
+			</binding>
+		</button>
+		
+		<button>
+			<legend>REV</legend>
+			<pref-width>40</pref-width>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.REV();</script>
+			</binding>
+		</button>
+		
+		<button>
+			<legend>ALT</legend>
+			<pref-width>40</pref-width>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.ALT();</script>
+			</binding>
+		</button>
+		
+		<button>
+			<legend>VS</legend>
+			<pref-width>40</pref-width>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.VS();</script>
+			</binding>
+		</button>
+		
+		<vrule/>
+		
+		<button>
+			<legend>DECR</legend>
+			<pref-width>45</pref-width>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.Knob(-1);</script>
+			</binding>
+		</button>
+		
+		<text>
+			<label>VS x 100</label>
+		</text>
+		
+		<button>
+			<legend>INCR</legend>
+			<pref-width>45</pref-width>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.Knob(1);</script>
+			</binding>
+		</button>
+		
+		<vrule/>
+		
+		<button>
+			<legend>DISC</legend>
+			<pref-width>40</pref-width>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.DISC();</script>
+			</binding>
+		</button>
+	</group>
+
+</PropertyList>

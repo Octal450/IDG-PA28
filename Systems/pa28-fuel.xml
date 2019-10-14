@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+
+<!-- Piper PA28 Fuel System -->
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<system name="PA28: Fuel">
+	
+	<property value="0">/systems/fuel/pump-psi-switch</property>
+	<property value="0">/systems/fuel/suck-psi-switch</property>
+	
+	<channel name="Fuel Logic and Pressure" execrate="8">
+		
+		<switch name="/systems/fuel/can-suck">
+			<default value="0"/>
+			<test logic="OR" value="1">
+				/engines/engine[0]/rpm ge 511
+				fcs/start-switch eq 1
+			</test>
+		</switch>
+		
+		<switch name="/systems/fuel/suck-fuel">
+			<default value="0"/>
+			<test logic="AND" value="1"> <!-- If the eng suck is not failed, and the engine is running or started -->
+				/systems/failures/fuel/eng-suck ne 1
+				/systems/fuel/can-suck eq 1
+			</test>
+			<test logic="AND" value="1">
+				/systems/failures/fuel/pump ne 1
+				/systems/electrical/outputs/fuel-pump ge 8
+			</test>
+		</switch>
+		
+		<switch name="/systems/fuel/pump-dec-value">
+			<default value="0.002"/>
+			<test logic="AND" value="0.5">
+				/systems/fuel/can-suck eq 1
+				/systems/fuel/suck-fuel ne 1
+			</test>
+		</switch>
+		
+		<switch name="/systems/fuel/suck-dec-value">
+			<default value="0.002"/>
+			<test value="0.5">
+				/systems/fuel/can-suck eq 1
+			</test>
+		</switch>
+		
+		<summer name="/systems/fuel/pump-psi-dec">
+			<input>/systems/fuel/pump-psi-switch</input>
+			<input>-/systems/fuel/pump-dec-value</input>
+		</summer>
+		
+		<switch name="/systems/fuel/pump-psi-switch">
+			<default value="/systems/fuel/pump-psi-switch"/>
+			<test logic="AND" value="0.2">
+				/systems/electrical/outputs/fuel-pump ge 8
+				/systems/failures/fuel/pump ne 1
+			</test>
+			<test value="/systems/fuel/pump-psi-dec">
+				/systems/fuel/pump-psi-switch gt 0
+			</test>
+		</switch>
+		
+		<summer name="/systems/fuel/suck-psi-dec">
+			<input>/systems/fuel/suck-psi-switch</input>
+			<input>-/systems/fuel/suck-dec-value</input>
+		</summer>
+		
+		<switch name="/systems/fuel/suck-psi-switch">
+			<default value="/systems/fuel/suck-psi-switch"/>
+			<test logic="OR" value="5.7">
+				/systems/fuel/suck-fuel eq 1
+				/systems/fuel/pump-psi-switch eq 0.2
+			</test>
+			<test logic="AND" value="/systems/fuel/suck-psi-dec">
+				/systems/fuel/suck-psi-switch gt 0
+				/systems/fuel/pump-psi-switch lt 0.001
+			</test>
+		</switch>
+		
+		<summer name="/systems/fuel/pressure-psi">
+			<input>/systems/fuel/pump-psi-switch</input>
+			<input>/systems/fuel/suck-psi-switch</input>
+			<clipto>
+				<min>0</min>
+				<max>10</max>
+			</clipto>
+		</summer>
+	
+	</channel>
+	
+	<channel name="Main Fuel">
+		
+		<!-- Fuel to Engine Pipe -->
+		<switch name="fuel/from-tank0-to-tank2">
+			<default value="0"/>
+			<test logic="AND" value="0.1">
+				/controls/fuel/switches/selected-tank eq 1
+				/systems/fuel/pressure-psi gt 0
+				propulsion/tank[0]/contents-lbs gt 1
+				propulsion/tank[2]/contents-lbs lt 0.008
+			</test>
+		</switch>
+		
+		<switch name="fuel/from-tank1-to-tank2">
+			<default value="0"/>
+			<test logic="AND" value="0.1">
+				/controls/fuel/switches/selected-tank eq 2
+				/systems/fuel/pressure-psi gt 0
+				propulsion/tank[1]/contents-lbs gt 1
+				propulsion/tank[2]/contents-lbs lt 0.008
+			</test>
+		</switch>
+		
+		<!-- Engine Pipe Flow Rate -->
+		<summer name="fuel/from-tank0-and-tank1-to-tank2">
+			<input>fuel/from-tank0-to-tank2</input>
+			<input>fuel/from-tank1-to-tank2</input>
+			<output>propulsion/tank[2]/external-flow-rate-pps</output>
+		</summer>
+		
+		<!-- Tank Flow Rate -->
+		<summer name="fuel/tank0-flow-rate">
+			<input>-fuel/from-tank0-to-tank2</input>
+			<output>propulsion/tank[0]/external-flow-rate-pps</output>
+		</summer>
+		
+		<summer name="fuel/tank1-flow-rate">
+			<input>-fuel/from-tank1-to-tank2</input>
+			<output>propulsion/tank[1]/external-flow-rate-pps</output>
+		</summer>
+	
+	</channel>
+
+</system>

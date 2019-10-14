@@ -1,0 +1,1342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<PropertyList>
+	
+	<group>
+		<name>Normal</name>
+		
+		<checklist>
+			<title>Preflight</title>
+			<page>
+				<item>
+					<name>Control Wheel</name>
+					<value>release belts</value>
+				</item>
+				<item>
+					<name>Avionics Master</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Parking Brake</name>
+					<value>set</value>
+				</item>
+				<item>
+					<name>Electric Switches</name>
+					<value>OFF (except beacon)</value>
+				</item>
+				<item>
+					<name>Magneto Switch</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>idle cut off</value>
+				</item>
+				<item>
+					<name>Master Switch</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Fuel Quantity Gauges</name>
+					<value>check</value>
+				</item>
+				<item>
+					<name>Annunciator Panel</name>
+					<value>press to test</value>
+				</item>
+				<item>
+					<name>Continued on next page...</name>
+					<value></value>
+				</item>
+			</page>
+			<page>
+				<item>
+					<name>Master Switch</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Flight Controls</name>
+					<value>free and correct</value>
+				</item>
+				<item>
+					<name>Flaps</name>
+					<value>check</value>
+				</item>
+				<item>
+					<name>Trim</name>
+					<value>check, set</value>
+				</item>
+				<item>
+					<name>Pitot Drain</name>
+					<value>drain, close</value>
+				</item>
+				<item>
+					<name>Static Drain</name>
+					<value>drain, close</value>
+				</item>
+				<item>
+					<name>Windows</name>
+					<value>check, clean</value>
+				</item>
+				<item>
+					<name>Tow bar</name>
+					<value>stow</value>
+				</item>
+				<item>
+					<name>Baggage</name>
+					<value>stowed properly and secure</value>
+				</item>
+				<item>
+					<name>Continued on next page...</name>
+					<value></value>
+				</item>
+			</page>
+			<page>
+				<item>
+					<name>Baggage Door</name>
+					<value>close and secure</value>
+				</item>
+				<item>
+					<name>Master Switch</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Cockit Lighting</name>
+					<value>check</value>
+				</item>
+				<item>
+					<name>Nav and Strobe Lights</name>
+					<value>check</value>
+				</item>
+				<item>
+					<name>Stall warning</name>
+					<value>check</value>
+				</item>
+				<item>
+					<name>Pitot Heat</name>
+					<value>check</value>
+				</item>
+				<item>
+					<name>All Switches</name>
+					<value>OFF (except beacon)</value>
+				</item>
+				<item>
+					<name>Passengers</name>
+					<value>board</value>
+				</item>
+				<item>
+					<name>Cabin Door</name>
+					<value>close and secure</value>
+				</item>
+				<item>
+					<name>Seat Belts and Harnesses</name>
+					<value>fasten - check inertia reel</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Before Starting Engine</title>
+			<page>
+				<item>
+					<name>Parking Brake</name>
+					<value>set</value>
+				</item>
+				<item>
+					<name>Carburetor Heat</name>
+					<value>full OFF</value>
+				</item>
+				<item>
+					<name>Fuel Selector</name>
+					<value>desired tank</value>
+				</item>
+				<item>
+					<name>Avionics Master</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Circuit Breakers</name>
+					<value>check</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Starting Engine When Cold</title>
+			<page>
+				<item>
+					<name>Throttle</name>
+					<value>1/4 inch open</value>
+				</item>
+				<item>
+					<name>Master Switch</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>test then OFF</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>full rich</value>
+				</item>
+				<item>
+					<name>Starter</name>
+					<value>engage</value>
+				</item>
+				<item>
+					<name>Throttle</name>
+					<value>adjust for 1100 RPM</value>
+				</item>
+				<item>
+					<name>Oil Pressure</name>
+					<value>check, green</value>
+				</item>
+				<item>
+					<name>If engine does not start within 10 seconds, prime and repeat</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Starting Engine When Hot</title>
+			<page>
+				<item>
+					<name>Throttle</name>
+					<value>1/2 inch open</value>
+				</item>
+				<item>
+					<name>Master Switch</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>test then OFF</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>full rich</value>
+				</item>
+				<item>
+					<name>Starter</name>
+					<value>engage</value>
+				</item>
+				<item>
+					<name>Throttle</name>
+					<value>adjust for 1100 RPM</value>
+				</item>
+				<item>
+					<name>Oil Pressure</name>
+					<value>check, green</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Starting Engine When Flooded</title>
+			<page>
+				<item>
+					<name>Throttle</name>
+					<value>open full</value>
+				</item>
+				<item>
+					<name>Master Switch</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>test then OFF</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>idle cut off</value>
+				</item>
+				<item>
+					<name>Starter</name>
+					<value>engage</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>advance</value>
+				</item>
+				<item>
+					<name>Throttle</name>
+					<value>adjust for 1100 RPM</value>
+				</item>
+				<item>
+					<name>Oil Pressure</name>
+					<value>check, green</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Warm Up</title>
+			<page>
+				<item>
+					<name>Mixture</name>
+					<value>lean for taxi</value>
+				</item>
+				<item>
+					<name>Throttle</name>
+					<value>adjust for 1100 RPM</value>
+				</item>
+				<item>
+					<name>Exterior Lights</name>
+					<value>as required</value>
+				</item>
+				<item>
+					<name>Avionics Master</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Transponder</name>
+					<value>ALT and check code</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Taxi</title>
+			<page>
+				<item>
+					<name>Chocks</name>
+					<value>removed</value>
+				</item>
+				<item>
+					<name>Taxi Area</name>
+					<value>clear</value>
+				</item>
+				<item>
+					<name>Brakes</name>
+					<value>check</value>
+				</item>
+				<item>
+					<name>Throttle</name>
+					<value>applied slowly</value>
+				</item>
+				<item>
+					<name>Steering</name>
+					<value>check</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Ground Check</title>
+			<page>
+				<item>
+					<name>Parking Brake</name>
+					<value>set</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>rich</value>
+				</item>
+				<item>
+					<name>Fuel Selector</name>
+					<value>switch tanks</value>
+				</item>
+				<item>
+					<name>Throttle</name>
+					<value>adjust for 2000 RPM</value>
+				</item>
+				<item>
+					<name>Magnetos</name>
+					<value>check L and R</value>
+				</item>
+				<item>
+					<name>Max drop 175 RPM</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Max difference 50 RPM</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Vacuum</name>
+					<value>5.0 Hg +/- 0.1 Hg</value>
+				</item>
+				<item>
+					<name>Oil Temp</name>
+					<value>check, green</value>
+				</item>
+				<item>
+					<name>Continued on next page...</name>
+					<value></value>
+				</item>
+			</page>
+			<page>
+				<item>
+					<name>Oil Pressure</name>
+					<value>check, green</value>
+				</item>
+				<item>
+					<name>Ammeter</name>
+					<value>verify output</value>
+				</item>
+				<item>
+					<name>Annunciator Panel</name>
+					<value>press to test</value>
+				</item>
+				<item>
+					<name>Carburetor Heat</name>
+					<value>full ON</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Fuel Pressure</name>
+					<value>check, green</value>
+				</item>
+				<item>
+					<name>Throttle</name>
+					<value>check idle</value>
+				</item>
+				<item>
+					<name>Carburetor Heat</name>
+					<value>full OFF</value>
+				</item>
+				<item>
+					<name>Throttle</name>
+					<value>adjust for 1100 RPM</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Before Takeoff</title>
+			<page>
+				<item>
+					<name>Master Switch</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Seat Backs</name>
+					<value>erect</value>
+				</item>
+				<item>
+					<name>Controls</name>
+					<value>free and correct</value>
+				</item>
+				<item>
+					<name>Flight Instruments</name>
+					<value>set, check</value>
+				</item>
+				<item>
+					<name>Fuel Selector</name>
+					<value>desired tank</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Engine Gauges</name>
+					<value>check, green</value>
+				</item>
+				<item>
+					<name>External Lights</name>
+					<value>as required</value>
+				</item>
+				<item>
+					<name>Carburetor Heat</name>
+					<value>full OFF</value>
+				</item>
+				<item>
+					<name>Continued on next page...</name>
+					<value></value>
+				</item>
+			</page>
+			<page>
+				<item>
+					<name>Mixture</name>
+					<value>rich</value>
+				</item>
+				<item>
+					<name>Primer</name>
+					<value>Locked</value>
+				</item>
+				<item>
+					<name>Belts and Harnesses</name>
+					<value>fastened/adjusted</value>
+				</item>
+				<item>
+					<name>Empty Seats</name>
+					<value>loose articles secured</value>
+				</item>
+				<item>
+					<name>Flaps</name>
+					<value>set</value>
+				</item>
+				<item>
+					<name>Trim Tab</name>
+					<value>set</value>
+				</item>
+				<item>
+					<name>Radios and Transponder</name>
+					<value>set</value>
+				</item>
+				<item>
+					<name>Doors and Windows</name>
+					<value>latched</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Normal Takeoff</title>
+			<page>
+				<item>
+					<name>Flaps</name>
+					<value>set</value>
+				</item>
+				<item>
+					<name>Trim Tab</name>
+					<value>set</value>
+				</item>
+				<item>
+					<name>Accelerate to 45 to 55 KIAS</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Control Wheel</name>
+					<value>back pressure as required</value>
+				</item>
+				<item>
+					<name>BEST GLIDE SPEED: 73 KIAS</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Short Field, Obstacle Clearance</title>
+			<page>
+				<item>
+					<name>Flaps</name>
+					<value>25 (second notch)</value>
+				</item>
+				<item>
+					<name>Trim Tab</name>
+					<value>set</value>
+				</item>
+				<item>
+					<name>Accelerate to 52 KIAS</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Control Wheel</name>
+					<value>back pressure as required</value>
+				</item>
+				<item>
+					<name>Maintain 52 KIAS until obstacle clearance</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Retract flaps SLOWLY, then acceleate to 79 KIAS</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Short Field, No Obstacle</title>
+			<page>
+				<item>
+					<name>Flaps</name>
+					<value>0 (retracted)</value>
+				</item>
+				<item>
+					<name>Trim Tab</name>
+					<value>set</value>
+				</item>
+				<item>
+					<name>Accelerate to 50 KIAS</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Control Wheel</name>
+					<value>back pressure as required</value>
+				</item>
+				<item>
+					<name>After breaking ground, accelerate to 79 KIAS</name>
+					<value></value>
+				</item>
+				<item>
+					<name>BEST GLIDE SPEED: 73 KIAS</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Soft Field, Obstacle Clearance</title>
+			<page>
+				<item>
+					<name>Flaps</name>
+					<value>25 (second notch)</value>
+				</item>
+				<item>
+					<name>Trim Tab</name>
+					<value>set</value>
+				</item>
+				<item>
+					<name>Accelerate and lift off nose gear as soon as possible</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Lift off a lowest possible airspeed</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Accelerate just above ground to 52 KIAS to climb past obstacle, then climb at Vy pitch</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Retract flaps SLOWLY, then acceleate to 79 KIAS</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Soft Field, No Obstacle</title>
+			<page>
+				<item>
+					<name>Flaps</name>
+					<value>25 (second notch)</value>
+				</item>
+				<item>
+					<name>Trim Tab</name>
+					<value>set</value>
+				</item>
+				<item>
+					<name>Accelerate and lift off nose gear as soon as possible</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Lift off a lowest possible airspeed</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Accelerate just above ground to 52 KIAS, then climb at Vy pitch</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Retract flaps SLOWLY, then acceleate to 79 KIAS</name>
+					<value></value>
+				</item>
+				<item>
+					<name>BEST GLIDE SPEED: 73 KIAS</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Climb</title>
+			<page>
+				<item>
+					<name>Flaps</name>
+					<value>0 (retracted)</value>
+				</item>
+				<item>
+					<name>Best Rate (flaps 0)</name>
+					<value>79 KIAS</value>
+				</item>
+				<item>
+					<name>Best Angle (flaps 0)</name>
+					<value>63 KIAS</value>
+				</item>
+				<item>
+					<name>Enroute</name>
+					<value>87 KIAS</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>OFF at desired altitude</value>
+				</item>
+				<item>
+					<name>External Lights</name>
+					<value>as desired</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Cruise</title>
+			<page>
+				<item>
+					<name>Reference performance charts and Acvo-Lycoming Operator's Manual</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Normal Max Power</name>
+					<value>75%</value>
+				</item>
+				<item>
+					<name>Power</name>
+					<value>set per power table</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>adjust</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Descent</title>
+			<page>
+				<item>
+					<name>Throttle</name>
+					<value>2500 RPM</value>
+				</item>
+				<item>
+					<name>Airspeed</name>
+					<value>126 KIAS max</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>rich</value>
+				</item>
+				<item>
+					<name>Carburetor Heat</name>
+					<value>ON if required</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Approach and Landing</title>
+			<page>
+				<item>
+					<name>Fuel Selector</name>
+					<value>desired tank</value>
+				</item>
+				<item>
+					<name>Seat Backs</name>
+					<value>erect</value>
+				</item>
+				<item>
+					<name>Belts and Harnesses</name>
+					<value>fasten/adjust</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>set</value>
+				</item>
+				<item>
+					<name>External Lights</name>
+					<value>as desired</value>
+				</item>
+				<item>
+					<name>Flaps</name>
+					<value>set - 103 KIAS max</value>
+				</item>
+				<item>
+					<name>Trim to 70 KIAS</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Final Approach Speed (flaps 40)</name>
+					<value>63 KIAS</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Stopping Engine</title>
+			<page>
+				<item>
+					<name>Flaps</name>
+					<value>(0) retract</value>
+				</item>
+				<item>
+					<name>Throttle</name>
+					<value>adjust for 1800 RPM</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>External Lights and Electrical Equipment</name>
+					<value>OFF (except beacon)</value>
+				</item>
+				<item>
+					<name>Avionics Master</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Throttle</name>
+					<value>adjust for 1100 RPM</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>idle cut off</value>
+				</item>
+				<item>
+					<name>Magnetos</name>
+					<value>OFF (when prop stops)</value>
+				</item>
+				<item>
+					<name>Master Switch</name>
+					<value>OFF</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Parking</title>
+			<page>
+				<item>
+					<name>Control Wheel</name>
+					<value>secure with belts</value>
+				</item>
+				<item>
+					<name>Flaps</name>
+					<value>0 (retracted)</value>
+				</item>
+				<item>
+					<name>Wheel Chocks</name>
+					<value>in place</value>
+				</item>
+				<item>
+					<name>Tie Downs</name>
+					<value>secure</value>
+				</item>	
+				<item>
+					<name>(END NORMAL PROCEDURES)</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+	</group>
+	
+	<group>
+		<name>Emergency</name>
+		
+		<checklist>
+			<title>Engine Fire During Start</title>
+			<page>
+				<item>
+					<name>Starter</name>
+					<value>crank engine</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>idle cut off</value>
+				</item>
+				<item>
+					<name>Throttle</name>
+					<value>open</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Fuel Selector</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Abandon airplane if fire continues</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Engine Power Loss During Takeoff</title>
+			<page>
+				<item>
+					<name>If sufficient runway remains for a normal landing, land straight ahead</name>
+					<value></value>
+				</item>
+				<item>
+					<name>If insufficient runway remains: Maintain safe airspeed, make only shallow turns to avoid obstructions</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Flaps as situation requires, if sufficient altitude gained to attempt restart: Maintain safe airspeed</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Fuel Selector</name>
+					<value>switch to tank containing fuel</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>rich</value>
+				</item>
+				<item>
+					<name>Carburetor Heat</name>
+					<value>full ON</value>
+				</item>
+				<item>
+					<name>Primer</name>
+					<value>locked</value>
+				</item>
+				<item>
+					<name>If power is not regained, proceed with power off landing</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Engine Power Loss In Flight</title>
+			<page>
+				<item>
+					<name>Fuel Selector</name>
+					<value>switch to tank containing fuel</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>rich</value>
+				</item>
+				<item>
+					<name>Carburetor</name>
+					<value>full ON</value>
+				</item>
+				<item>
+					<name>Engine Gauges</name>
+					<value>check for indication of cause of power loss</value>
+				</item>
+				<item>
+					<name>Primer</name>
+					<value>locked</value>
+				</item>
+				<item>
+					<name>If no fuel pressure is indicated, check tank selector position to be sure it is on a tank containing fuel</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Continued on next page...</name>
+					<value></value>
+				</item>
+			</page>
+			<page>
+				<item>
+					<name>When power is restored:</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Carburetor Heat</name>
+					<value>full OFF</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>If power is not restored, prepare for power off landing</name>
+					<value>trim for 73 KIAS</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Power Off Landing</title>
+			<page>
+				<item>
+					<name>Locate suitable field, establish spiral pattern</name>
+					<value></value>
+				</item>
+				<item>
+					<name>1000ft above field at downwind, position for normal landing approach</name>
+					<value></value>
+				</item>
+				<item>
+					<name>When field can easily be reached, slow to 63 KIAS for shortest landing</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Touchdowns should normally be made at lowest possible airspeed with full flaps</name>
+					<value></value>
+				</item>
+				<item>
+					<name>When committed to landing:</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Ignition</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Master Switch</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Fuel Selector</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>idle cut off</value>
+				</item>
+				<item>
+					<name>Belts and Harnesses</name>
+					<value>tight</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Fire In Flight</title>
+			<page>
+				<item>
+					<name>Source of Fire</name>
+					<value>check</value>
+				</item>
+				<item>
+					<name>Electrical Fire (smoke in cabin):</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Master Switch</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Vents</name>
+					<value>open</value>
+				</item>
+				<item>
+					<name>Cabin Heat</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Land as soon as practical</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Engine Fire:</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Fuel Selector</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Throttle</name>
+					<value>closed</value>
+				</item>
+				<item>
+					<name>Continued on next page...</name>
+					<value></value>
+				</item>
+			</page>
+			<page>
+				<item>
+					<name>Mixture</name>
+					<value>idle cut off</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Heat</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Defroster</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Proceed with power off landing procedure</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Loss of Oil Pressure</title>
+			<page>
+				<item>
+					<name>Land as soon as possible and investigate cause</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Prepare for power off landing</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Loss Of Fuel Pressure</title>
+			<page>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Fuel Selector</name>
+					<value>check on fullest tank</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>High Oil Temperature</title>
+			<page>
+				<item>
+					<name>Land at nearest airport and investigate the problem</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Prepare for power off landing</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Electrical Failures</title>
+			<page>
+				<item>
+					<name>Note: When operating with light electrical load and a fully charged battery,</name>
+					<value></value>
+				</item>
+				<item>
+					<name>the Alternator Inop light may illuminate due to minimal alternator output.</name>
+					<value></value>
+				</item>
+				<item>
+					<name>If the alternator is functional, a slight increase in electrical load should</name>
+					<value></value>
+				</item>
+				<item>
+					<name>extinguish the Inop indication.</name>
+					<value></value>
+				</item>
+				<item>
+					<name>ALT annunciator light illuminated:</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Ammeter</name>
+					<value>check to verify inop, alternator</value>
+				</item>
+				<item>
+					<name>If ammeter shows zero:</name>
+					<value></value>
+				</item>
+				<item>
+					<name>ALT Switch</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Reduce electrical loads to minimum</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Continued on next page...</name>
+					<value></value>
+				</item>
+			</page>
+			<page>
+				<item>
+					<name>ALT Circuit Breaker</name>
+					<value>check and reset as required</value>
+				</item>
+				<item>
+					<name>If power not restored:</name>
+					<value></value>
+				</item>
+				<item>
+					<name>ALT Switch</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>If alternator output cannot be restored, reduce electrical loads and land as soon as practical</name>
+					<value></value>
+				</item>
+				<item>
+					<name>The battery is the only remaining source of electrical power.</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Electrical Overload</title>
+			<page>
+				<item>
+					<name>(Alternator over 20 amps above known electrical load)</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Electrical Load</name>
+					<value>reduce</value>
+				</item>
+				<item>
+					<name>If alternator loads are not reduced:</name>
+					<value></value>
+				</item>
+				<item>
+					<name>ALT Switch</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Land as soon as practical. Battery is the only remaining source of power</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Anticipate complete electrical failure</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Spin Recovery</title>
+			<page>
+				<item>
+					<name>Throttle</name>
+					<value>idle</value>
+				</item>
+				<item>
+					<name>Ailerons</name>
+					<value>neutral</value>
+				</item>
+				<item>
+					<name>Rudder</name>
+					<value>full opposite to direct of rotation</value>
+				</item>
+				<item>
+					<name>Control Wheel</name>
+					<value>full forward</value>
+				</item>
+				<item>
+					<name>Rudder</name>
+					<value>neutral (when rotation stops)</value>
+				</item>
+				<item>
+					<name>Control Wheel</name>
+					<value>as required to smoothly regain level flight attitude</value>
+				</item>
+			</page>
+		</checklist>
+		
+		<!-- I'll put it here, but commented out, because no way to actually follow it -->
+		<!--checklist>
+			<title>Open Door</title>
+			<page>
+				<item>
+					<name>If both upper and lower latches are open,</name>
+					<value></value>
+				</item>
+				<item>
+					<name>the door will trail slightly open and airspeeds will be reduced slightly</name>
+					<value></value>
+				</item>
+				<item>
+					<name>To close the door in flight:</name>
+					<value>Slow airplane to 89 KIAS</value>
+				</item>
+				<item>
+					<name>Cabin Vents</name>
+					<value>close</value>
+				</item>
+				<item>
+					<name>Storm Window</name>
+					<value>open</value>
+				</item>
+				<item>
+					<name>If upper latch is open</name>
+					<value>latch</value>
+				</item>
+				<item>
+					<name>If side latch is open, pull on arm rest while moving latch handle to latched position</name>
+					<value></value>
+				</item>
+				<item>
+					<name>If both latches are open, latch side latch, then top latch</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist-->
+		
+		<checklist>
+			<title>Engine Roughness</title>
+			<page>
+				<item>
+					<name>Carburetor Heat</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>If roughness continues after one (1) minute:</name>
+					<value></value>
+				</item>
+				<item>
+					<name>Carburetor Heat</name>
+					<value>OFF</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>adjust for maximum smoothness</value>
+				</item>
+				<item>
+					<name>Electric Fuel Pump</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Fuel Selector</name>
+					<value>switch tanks</value>
+				</item>
+				<item>
+					<name>Engine Gauges</name>
+					<value>check</value>
+				</item>
+				<item>
+					<name>Magneto Switch</name>
+					<value>L then R then both</value>
+				</item>
+				<item>
+					<name>If operation is satisfactory on either one,</name>
+					<value></value>
+				</item>
+				<item>
+					<name>continue on that magneto at reduced power and full rich mixture at first airport</name>
+					<value></value>
+				</item>
+			</page>
+		</checklist>
+		
+		<checklist>
+			<title>Carburetor Icing</title>
+			<page>
+				<item>
+					<name>Carburetor Heat</name>
+					<value>ON</value>
+				</item>
+				<item>
+					<name>Mixture</name>
+					<value>adjust for maximum smoothness</value>
+				</item>
+			</page>
+		</checklist>
+	</group>
+
+</PropertyList>

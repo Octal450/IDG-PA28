@@ -1,0 +1,5 @@
+Livery		status
+N307MM		current, default livery
+G-OPTI		current
+N-2436Y		current
+N-47508		current

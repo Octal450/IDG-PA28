@@ -1,0 +1,216 @@
+<?xml version="1.0" ?>
+
+<!-- Copyright (c) 2019 Joshua Davidson (Octal450) -->
+
+<PropertyList> 
+	
+	<path>yoke.ac</path> 
+	
+	<model>
+		<name>buttons</name>
+		<path>yoke-sw.ac</path>
+	</model>
+	
+	<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+		<object-name>sw.placards</object-name>
+	</effect>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>yoke</object-name>
+		<object-name>buttons</object-name>
+		<property>sim/multiplay/generic/float[1]</property>
+		<factor>-0.12</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>yoke</object-name>
+		<object-name>buttons</object-name>
+		<property>sim/multiplay/generic/float[0]</property>
+		<factor>-92</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0</y-m>
+			<z-m>0</z-m>
+		</center>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>yoke</object-name>
+		<object-name>buttons</object-name>
+		<condition>
+			<property>options/show-l-yoke</property>
+		</condition>
+	</animation>
+	
+ 	<animation>
+		<type>pick</type>
+		<object-name>pick.obj</object-name>
+		<visible>0</visible>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>options/show-l-yoke</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>acconfig.writeSettings();</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<!-- Buttons -->
+	
+	<animation>
+		<type>material</type>
+		<object-name>buttons</object-name>
+		<emission>
+			<red>0.05</red>
+			<green>0.05</green>
+			<blue>0.05</blue>
+			<factor-prop>controls/lighting/panel-norm</factor-prop>
+		</emission>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>sw.apdisc.btn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>/it-stec55x/input/disc</property>
+				<value>1</value>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.DISC();</script>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>/it-stec55x/input/disc</property>
+					<value>0</value>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>sw.apdisc.btn</object-name>
+		<property>/it-stec55x/input/disc</property>
+		<factor>0.002</factor>
+		<axis>
+			<x1-m>0.19073</x1-m>
+			<y1-m>-0.09507</y1-m>
+			<z1-m>0.1249</z1-m>
+			<x2-m>0.18491</x2-m>
+			<y2-m>-0.10146</y2-m>
+			<z2-m>0.12491</z2-m>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>sw.cws.btn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script>stec55x.button.CWS(1);</script>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>nasal</command>
+					<script>stec55x.button.CWS(0);</script>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>sw.cws.btn</object-name>
+		<property>/it-stec55x/input/cws</property>
+		<factor>0.002</factor>
+		<axis>
+			<x1-m>0.18232</x1-m>
+			<y1-m>-0.10995</y1-m>
+			<z1-m>0.14767</z1-m>
+			<x2-m>0.18016</x2-m>
+			<y2-m>-0.10803</y2-m>
+			<z2-m>0.14294</z2-m>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>sw.trim.btn</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>it-stec55x/input/man-trim</property>
+				<value>-1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>it-stec55x/input/man-trim</property>
+					<value>0</value>
+				</binding>
+			</mod-up>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-assign</command>
+				<property>it-stec55x/input/man-trim</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>it-stec55x/input/man-trim</property>
+					<value>0</value>
+				</binding>
+			</mod-up>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>sw.trim.btn</object-name>
+		<property>it-stec55x/input/man-trim</property>
+		<factor>-0.0025</factor>
+		<axis>
+			<x1-m>0.19705</x1-m>
+			<y1-m>-0.132</y1-m>
+			<z1-m>0.12715</z1-m>
+			<x2-m>0.20999</x2-m>
+			<y2-m>-0.1435</y2-m>
+			<z2-m>0.11655</z2-m>
+		</axis>
+	</animation>
+
+</PropertyList>

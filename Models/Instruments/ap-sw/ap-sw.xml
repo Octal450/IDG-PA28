@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+	
+	<path>ap-sw.ac</path>
+	
+	<animation>
+		<type>material</type>
+		<emission>
+			<red>0.1</red>
+			<green>0.1</green>
+			<blue>0.1</blue>
+			<factor-prop>controls/lighting/panel-norm</factor-prop>
+		</emission>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>APSW</object-name>
+		<object-name>APBase</object-name>
+		<condition>
+			<not-equals>
+				<property>it-stec55x/settings/fd-equipped</property>
+				<value>1</value>
+			</not-equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>select</type>
+		<object-name>APFDSW</object-name>
+		<object-name>APFDBase</object-name>
+		<condition>
+			<equals>
+				<property>it-stec55x/settings/fd-equipped</property>
+				<value>1</value>
+			</equals>
+		</condition>
+	</animation>
+	
+	<animation>
+		<type>translate</type>
+		<object-name>TrimSW</object-name>
+		<object-name>TrimBase</object-name>
+		<property>it-stec55x/settings/fd-equipped</property>
+		<factor>-0.0111</factor>
+		<axis>
+			<y>1</y>
+		</axis>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>APSW</object-name>
+		<object-name>APBase</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>it-stec55x/input/ap-master-sw</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/switch1", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>APFDSW</object-name>
+		<object-name>APFDBase</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-cycle</command>
+				<property>it-stec55x/input/apfd-master-sw</property>
+				<value>0</value>
+				<value>1</value>
+				<value>2</value>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/switch1", 1);</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-cycle</command>
+				<property>it-stec55x/input/apfd-master-sw</property>
+				<value>2</value>
+				<value>1</value>
+				<value>0</value>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/switch1", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>APSW</object-name>
+		<property>it-stec55x/input/ap-master-sw</property>
+		<factor>-47</factor>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>-1.73278</x-m>
+			<z-m>0.086352</z-m>
+		</center>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>APFDSW</object-name>
+		<property>it-stec55x/input/apfd-master-sw</property>
+		<factor>-23.5</factor>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>-1.73278</x-m>
+			<z-m>0.086352</z-m>
+		</center>
+	</animation>
+	
+	<animation>
+		<object-name>TrimSW</object-name>
+		<object-name>TrimBase</object-name>
+		<type>pick</type>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<binding>
+				<command>property-toggle</command>
+				<property>it-stec55x/input/electric-trim-sw</property>
+			</binding>
+			<binding>
+				<command>nasal</command>
+				<script>setprop("/sim/sounde/switch1", 1);</script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<type>rotate</type>
+		<object-name>TrimSW</object-name>
+		<property>it-stec55x/input/electric-trim-sw</property>
+		<factor>-47</factor>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>-1.73278</x-m>
+			<z-m>0.086352</z-m>
+		</center>
+	</animation>
+
+</PropertyList>

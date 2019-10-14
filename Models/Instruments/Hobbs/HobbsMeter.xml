@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<path>HobbsMeter.ac</path>
+
+<animation>
+	<type>material</type>
+	<object-name>Base_02</object-name>
+	<object-name>Counter_1000</object-name>
+	<object-name>Counter_100</object-name>
+	<object-name>Counter_10</object-name>
+	<object-name>Counter_1</object-name>
+	<object-name>Counter_0</object-name>
+	<emission>
+		<red>0.7</red>
+		<green>0.7</green>
+		<blue>0.7</blue>
+		<factor-prop>controls/lighting/panel-norm</factor-prop>
+	</emission>
+</animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>Counter_1000</object-name>
+    <property>instrumentation/hobbs-meter/thousands</property>
+    <factor>-36</factor>
+    <step>1</step>
+    <center>
+		<x-m>-0.0070</x-m>
+		<y-m>-0.01077</y-m>
+		<z-m>-0.00125</z-m>
+    </center>
+    <axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+    </axis>
+</animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>Counter_100</object-name>
+    <property>instrumentation/hobbs-meter/hundreds</property>
+    <factor>-36</factor>
+    <step>1</step>
+    <center>
+		<x-m>-0.0070</x-m>
+		<y-m>-0.006859</y-m>
+		<z-m>-0.00125</z-m>
+    </center>
+    <axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+    </axis>
+</animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>Counter_10</object-name>
+    <property>instrumentation/hobbs-meter/tens</property>
+    <factor>-36</factor>
+    <step>1</step>
+    <center>
+		<x-m>-0.0070</x-m>
+		<y-m>-0.002948</y-m>
+		<z-m>-0.00125</z-m>
+    </center>
+    <axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+    </axis>
+</animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>Counter_1</object-name>
+    <property>instrumentation/hobbs-meter/hours</property>
+    <factor>-36</factor>
+    <center>
+		<x-m>-0.0070</x-m>
+		<y-m>0.000964</y-m>
+		<z-m>-0.00125</z-m>
+    </center>
+    <axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+    </axis>
+</animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>Counter_0</object-name>
+    <property>instrumentation/hobbs-meter/tenths</property>
+    <factor>-36</factor>
+    <center>
+		<x-m>-0.0070</x-m>
+		<y-m>0.004875</y-m>
+		<z-m>-0.00125</z-m>
+    </center>
+    <axis>
+		<x>0</x>
+		<y>1</y>
+		<z>0</z>
+    </axis>
+</animation>
+
+</PropertyList>
+
