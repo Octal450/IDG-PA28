@@ -13,6 +13,7 @@
 		<object-name>flag</object-name>
 		<object-name>ac</object-name>
 		<object-name>bg</object-name>
+		<object-name>Plane.001</object-name>
 		<emission>
 			<red>0.6</red>
 			<green>0.6</green>
